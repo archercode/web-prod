@@ -11,19 +11,19 @@
       <div class="row-fluid">
         <div class="recipe_display span12">
           <div id="recipe_main_details" class="recipe_main_details">
-              {{#if RecipeTracker.selectedRecipeController.selectedRecipe}}
-                {{#view RecipeTracker.RecipeDetailsView}}
-                  {{#with RecipeTracker.selectedRecipeController.selectedRecipe}}
+              {{#if ShoppingCart.selectedProductController.selectedProduct}}
+                {{#view ShoppingCart.RecipeDetailsView}}
+                  {{#with ShoppingCart.selectedProductController.selectedProduct}}
                     <h2>{{title}}</h2>
-                    <h4>Directions:</h4>
+                    <h4>Description:</h4>
                     <div class="recipe_display_details">
-                     <p>{{ingredients}}</p>
-                     <p>{{directions}}</p>
+                     <p>{{description}}</p>
+                     <p>{{type}}</p>
                     </div>
                  {{/with}}
                 {{/view}}
               {{else}}
-                <h2>Please select a recipe (do it!)</h2>
+                <h2>Please select a item (do it!)</h2>
               {{/if}}
           </div>      
         </div>
@@ -34,8 +34,8 @@
       <div class="row-fluid">
         <div class="navigation span12">
           <div class="recipe_list span12">
-            {{#each RecipeTracker.recipesController}}
-              {{#view RecipeTracker.RecipeListingsView contentBinding="this"}}
+            {{#each ShoppingCart.productsController}}
+              {{#view ShoppingCart.RecipeListingsView contentBinding="this"}}
                  <ul class="recipe_listings">
                     <li>{{title}}</li>
                   </ul>

@@ -1,19 +1,19 @@
-RecipeTracker.ApplicationView = Ember.View.extend({
+ShoppingCart.ApplicationView = Ember.View.extend({
   templateName: 'application'
 });
 
-RecipeTracker.RecipeListingsView = Ember.View.extend({
+ShoppingCart.RecipeListingsView = Ember.View.extend({
     click: function(event) {
         var content = this.get('content');
-        RecipeTracker.selectedRecipeController.select(content);
+        ShoppingCart.selectedProductController.select(content);
     },
     nextRecipe: function(event) {
-        RecipeTracker.selectedRecipeController.next();
+        ShoppingCart.selectedProductController.next();
     }
 });
 
-RecipeTracker.SelectedRecipeView = Ember.View.extend({});
+ShoppingCart.selectedProductView = Ember.View.extend({});
 
-RecipeTracker.RecipeDetailsView = Ember.View.extend({
-    contentBinding: 'RecipeTracker.selectedRecipeController.selectedRecipe'
+ShoppingCart.RecipeDetailsView = Ember.View.extend({
+    contentBinding: 'ShoppingCart.selectedProductController.selectedProduct'
 });

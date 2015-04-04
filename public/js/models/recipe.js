@@ -1,5 +1,7 @@
-RecipeTracker.Recipe = Ember.Object.extend({
-	id: null,
+ShoppingCart.Recipe = Ember.Object.extend({
 	title: null,
-	directions: null,
-    ingredients: null});
+    price: null,
+    description: null,
+    type: null,
+    image: null,
+});

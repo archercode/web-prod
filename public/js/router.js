@@ -1,9 +1,8 @@
-RecipeTracker.Router = Ember.Router.extend({
+ShoppingCart.Router = Ember.Router.extend({
   root: Ember.Route.extend({
     index: Ember.Route.extend({
       route: '/'
     })
   })
 })
-
-RecipeTracker.initialize();
+ShoppingCart.initialize();

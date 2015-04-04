@@ -1,14 +1,14 @@
-RecipeTracker.ApplicationController = Ember.Controller.extend();
+ShoppingCart.ApplicationController = Ember.Controller.extend();
 
-RecipeTracker.recipesController = Ember.ArrayController.createWithMixins({
+ShoppingCart.productsController = Ember.ArrayController.createWithMixins({
     content: [],
     addItem: function(item) {
         this.addObject(item);
     }});
 
-RecipeTracker.selectedRecipeController = Ember.ObjectController.createWithMixins({
-    selectedRecipe: [],
+ShoppingCart.selectedProductController = Ember.ObjectController.createWithMixins({
+    selectedProduct: [],
     select: function(item) {
-        this.set('selectedRecipe', item);
+        this.set('selectedProduct', item);
     }});
 

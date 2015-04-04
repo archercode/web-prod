@@ -1,6 +1,6 @@
-RecipeTracker = Ember.Application.createWithMixins({
+ShoppingCart = Ember.Application.createWithMixins({
 	ready: function() {
-		RecipeTracker.GetRecipeItems();   // this triggers an AJAX call to Clojure REST interface
+		ShoppingCart.GetRecipeItems();   // this triggers an AJAX call to Clojure REST interface
 	}
 });
 
