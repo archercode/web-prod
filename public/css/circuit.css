@@ -1,0 +1,29 @@
+
+.product_item_grid {
+    padding: 25px;
+}
+.product_item_description {
+    padding: 10px;
+    
+}
+
+
+a.list-group-item.active,
+a.list-group-item.active:hover,
+a.list-group-item.active:focus {
+
+    background-color: transparent;
+    
+
+}
+.image_logo {
+    center:true;
+    
+}
+
+.navbar-default {
+/*
+    background-color: transparent;
+    border-color: transparent;
+*/
+}

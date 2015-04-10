@@ -1,4 +1,4 @@
-App.Recipe = Ember.Object.extend({
+ShoppingCart.Recipe = Ember.Object.extend({
 	title: null,
     price: null,
     description: null,

@@ -1,12 +1,10 @@
-App.GetRecipeItems = function() {
-    console.log("Get REcipe");
-    /*$.ajax({
+ShoppingCart.GetRecipeItems = function() {
+    $.ajax({
         url: '/recipes/',
         dataType: 'json',
         success : function(data) {
-            debugger;
             for (var i = 0, len = data.length; i < len; i++) {
-                App.ProductsController.addItem(App.Recipe.create({    
+                ShoppingCart.productsController.addItem(ShoppingCart.Recipe.create({    
                     title:       data[i]['title'],
                     price:       data[i]['price'],
                     description: data[i]['description'],
@@ -15,7 +13,6 @@ App.GetRecipeItems = function() {
                 }));
             }
         } });
-    */
 };
 
 

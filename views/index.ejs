@@ -1,62 +1,394 @@
-<!doctype html>
+<!DOCTYPE html>
+<html>
 <head>
-  <title>A very simple Ember.js and Clojure web app example</title>
-  <link rel="stylesheet" href="css/style.css?v=2">
-  <link rel="stylesheet" href="css/bootstrap.css">
-</head>
-<body style="background:white;">
+  <meta charset="utf-8">
+  <title>The Flint &amp; Flame</title>
+  <link href="css/bootstrap.css" media="screen" rel="stylesheet" />
+  <link href="css/application.css" media="screen" rel="stylesheet" />
+  <link href="css/circuit.css" media="screen" rel="stylesheet" />
+  
 
-  <script type="text/x-handlebars" data-template-name="application">
-    <div class="main_content container">
-      <div class="row-fluid">
-        <div class="recipe_display span12">
-          <div id="recipe_main_details" class="recipe_main_details">
-              {{#if ShoppingCart.selectedProductController.selectedProduct}}
-                {{#view ShoppingCart.RecipeDetailsView}}
-                  {{#with ShoppingCart.selectedProductController.selectedProduct}}
-                    <h2>{{title}}</h2>
-                    <h4>Description:</h4>
-                    <div class="recipe_display_details">
-                     <p>{{description}}</p>
-                     <p>{{type}}</p>
-                    </div>
-                 {{/with}}
-                {{/view}}
-              {{else}}
-                <h2>Please select a item (do it!)</h2>
-              {{/if}}
-          </div>      
-        </div>
-      </div>
-    </div>
 
-    <div class="container">
-      <div class="row-fluid">
-        <div class="navigation span12">
-          <div class="recipe_list span12">
-            {{#each ShoppingCart.productsController}}
-              {{#view ShoppingCart.RecipeListingsView contentBinding="this"}}
-                 <ul class="recipe_listings">
-                    <li>{{title}}</li>
-                  </ul>
-              {{/view}}
-            {{/each}}   
-          </div>
-        </div>
-      </div>
-    </div>
-  </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>
   <script src="js/libs/handlebars-1.1.2.js"></script>
-  <script src="js/libs/ember-1.7.0.js"></script>
   <script src="js/libs/bootstrap.js"></script>
-  <script src="js/app.js"></script>  
-  <script src="js/models/recipe.js"></script>
-  <script src="js/controllers/application.js"></script>
-  <script src="js/views/application.js"></script>
-  <script src="js/router.js"></script>
-  <script src="js/ajax_helpers.js"></script>
 
+
+<!-- 
+  <script src="js/libs/new/ember_v9.min.js"></script>
+  <script src="js/libs/new/ember-data_v16_1.min.js"></script>
+  <script src="js/libs/new/ember-data_v16_1.js.map"></script>
+-->
+  <script src="js/libs/ember-1.7.0.js"></script>
+  
+<script src="ember-data.js"></script>
+ <!--  // <script src="ember-data.js"></script> -->
+  
+<!-- 
+//TONNY: from sample
+  // <script src="js/controllers/application.js"></script>
+  // <script src="js/views/application.js"></script>
+  // <script src="js/router.js"></script>
+-->
+
+
+ <!--  // <script src="jquery.js"></script>  
+  //       <script src="bootstrap.js"></script>
+
+  // <script src="handlebars-1.0.0.js"></script>
+  // <script src="ember-1.0.0.js"></script> -->
+
+  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+
+  <script src="accounting.js"></script>
+  
+    
+  <script src="js/application.js"></script>
+    
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/contacts.js"></script>
+  <script src="js/data.js"></script>
+    
+    
+  <script src="js/app.js"></script>  
+ <script src="js/models/recipe.js"></script>
+ <script src="js/ajax_helpers.js"></script>
+
+    
+  <link href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<script type="text/x-handlebars" data-template-name='application'>
+  <div class="navbar navbar-default">
+    <div class="container home_links">
+      {{#link-to "index" class="navbar-brand"}}<img src="images/logo.png"  class="image_logo" alt="logo" height="34" width="224">{{/link-to}}
+      <ul class="nav navbar-nav navbar-right">
+        {{#link-to "index" tagName="li"}}Home{{/link-to}}
+        {{#link-to "contacts" tagName="li"}}About{{/link-to}}
+        {{#link-to "products" tagName="li"}}Store{{/link-to}}
+        
+        <!-- TONNY 04.04.15 -->
+         {{#link-to "checkout" tagName="li"}}Cart{{/link-to}} 
+        <!--                -->  
+        <li>
+    {{itemOrderCount}}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container">
+    {{outlet}}
+    {{outlet 'modal'}}
+  </div>
+
+  <footer class='container'>
+    <hr />
+    <p class='pull-left'>&copy; 2015 ArcherCode </p>
+    <p class='pull-right'>{{#link-to 'credits'}}Credits{{/link-to}}</p>
+  </footer>
+</script>
+
+<!-- TONNY 04.04.15 checkout SCRIPT -->    
+
+<script type="text/x-handlebars" data-template-name="checkout">
+  <div class="jumbotron">
+    <h1>Welcome to The Flint &amp; Flame!</h1>
+    <p class="tagline">Everything you need to make it through the winter.</p>
+  <!--
+    <p>{{#link-to 'products' classNames='btn btn-primary btn-lg'}}Browse All {{itemCount}} Items &raquo;{{/link-to}}</p>
+  -->
+  </div>
+
+  <div class="body-content">
+    <div class="row">
+    
+    <ul>
+
+    {{itemOrderCount}}
+    {{#each filterComputed}}
+    <li>{{name}} - {{amount}}</li>
+    {{/each}}
+    {{totalTweetsUnread}}
+    </ul>
+    <h1>{{totalAmount}}</h1>
+
+       <button type="button" class="btn btn-primary" {{action "ok" }}>checkout</button>
+    </div>
+  </div>
+</script>
+
+
+
+<!-- the data is from cart fixture [data.js] -->    
+
+<script type="text/x-handlebars" data-template-name="index">
+  <div class="jumbotron">
+    <h1>Welcome to The Flint &amp; Flame!</h1>
+    <p class="tagline">Everything you need to make it through the winter.</p>
+    <p>{{#link-to 'products' classNames='btn btn-primary btn-lg'}}Browse All {{productCount}} Items &raquo;{{/link-to}}</p>
+  </div>
+
+  <div class="body-content">
+    <div class="row">
+      {{#each onSale}}
+        {{product-detail product=this classNames="col-sm-4"}}
+      {{/each}}
+    </div>
+  </div>
+</script>
+
+
+<!-- header-->
+<script type="text/x-handlebars" data-template-name='products'>
+
+    {{product-header-filters product=this tagName='div' classNames='product_item_grid'}}
+<div class="row">
+  <div>
+    {{outlet}}
+    {{outlet modal}}
+  </div>
+</div>
+</script>
+    
+<script type="text/x-handlebars" data-template-name='components/product-header-filters'>
+    <div class='row'>
+      <div>
+          <ul class="nav nav-tabs nav-justified">
+
+            <li class="filter-item horizontal-item">
+          {{#link-to 'products.sale' classNames="list-group-item"}}
+    <!--        <span class="badge">{{onSale}}</span> -->
+                <h3>On Sale</h3>
+          {{/link-to}}
+            </li>
+            <li class="filter-item horizontal-item">
+          {{#link-to 'products.seasonal' classNames="list-group-item"}}
+    <!--        <span class="badge">{{seasonal}}</span> -->
+                <h3>Seasonal</h3>
+          {{/link-to}}
+            </li>
+            <li class="filter-item horizontal-item">
+
+          {{#link-to 'products.sensor' classNames="list-group-item"}}
+    <!--        <span class="badge">{{sensor}}</span> -->
+                <h3>Sensors</h3>
+          {{/link-to}}
+            </li>
+        </ul>
+      </div>
+    </div>    
+    
+    
+</script>    
+    
+    
+    
+<script type="text/x-handlebars" data-template-name='products/index'> 
+    <div class='list-unstyled'>
+      {{#each}}
+        <div class="col-md-4" {{action 'showModal' 'product-detail-modal' this}}>
+        {{product-detail product=this tagName='div' classNames='product_item_grid'}}
+        </div>
+      {{/each}}
+    </div>
+</script>
+
+
+<script type="text/x-handlebars" data-template-name='products/seasonal'> 
+<h2>Seasonal Items</h2>
+
+<div class='list-unstyled'>
+  {{#each}}
+    <div class="col-md-4" {{action 'showModal' 'product-detail-modal' this}}>
+    {{product-detail product=this tagName='div' classNames='product_item_grid'}}
+    </div>
+  {{/each}}
+</div>
+</script>
+
+<script type="text/x-handlebars" data-template-name='products/sale'> 
+<h2>On Sale Items</h2>
+<div class='list-unstyled'>
+  {{#each}}
+    <div class="col-md-4" {{action 'showModal' 'product-detail-modal' this}}>
+    {{product-detail product=this tagName='div' classNames='product_item_grid'}}
+    </div>
+  {{/each}}
+</div>
+</script>
+    
+<script type="text/x-handlebars" data-template-name='products/sensor'>
+<h2>Sensors</h2>
+<div class='list-unstyled'>
+  {{#each}}
+    <div class="col-md-4" {{action 'showModal' 'product-detail-modal' this}}>
+    {{product-detail product=this tagName='div' classNames='product_item_grid'}}
+    </div>
+  {{/each}}
+</div>
+</script>
+            <script type="text/x-handlebars" data-template-name="product-detail-modal">
+              {{#modal-dialog title=model.title ok='logout' close='removeModal' yesButton='Buy' hasCloseBtn=True}}
+                <div class="row">  
+                    <img {{bind-attr src='model.image'}} class='img-thumbnail'/>
+
+                </div>
+                <div class="row">
+                    <p class="product-description">{{model.description}}</p>
+                </div>
+              {{/modal-dialog}}
+            </script>
+    
+            <script type="text/x-handlebars" data-template-name="logout-modal">
+              {{#modal-dialog title='Logout' ok='logout' close='removeModal'}}
+                Are you sure you want to logout?
+              {{/modal-dialog}}
+            </script>
+    
+              <script type="text/x-handlebars" id="components/modal-dialog">
+                <div class="modal fade">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">{{title}}</h4>
+                      </div>
+                      <div class="modal-body">
+                        {{yield}}
+                      </div>
+                      <div class="modal-footer">
+                          {{#if hasCloseBtn}}  
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          {{/if}}
+                        <button type="button" class="btn btn-primary" {{action "ok" }}>{{yesButton}}</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </script>
+  
+      
+<script type="text/x-handlebars" data-template-name='components/product-detail'>
+     
+<div class="row">  
+    <img {{bind-attr src='product.image'}} class='img-thumbnail'/>
+    
+</div>
+<div class='row product_item_description'>
+  
+    <div class="col-md-8">
+        <h4>{{product.title}}</h4>
+    </div>
+    <div class="col-md-4">
+<!--
+        {{#link-to 'product' product classNames='btn btn-success'}} 
+        ${{product.price}}
+        {{/link-to}}
+-->
+        <button class='btn btn-success' {{action 'openModal' action product}}> ${{product.price}}</button>
+        
+    </div>
+    
+<!--
+  <div class="labels">
+    {{#if product.isOnSale }}<span class="label label-success">{{#link-to 'products.sale'}}On Sale{{/link-to}}</span>{{/if}}
+    {{#if product.isSeasonal }}<span class="label label-warning">{{#link-to 'products.seasonal'}}Seasonal{{/link-to}}</span>{{/if}}
+  </div>
+-->
+<!--  <p class="product-description">{{product.description}}</p>-->
+  
+</div>
+    
+    
+    
+</script>
+
+<script type="text/x-handlebars" data-template-name='product'>
+{{#modal-dialog action="close"}}
+  <div class='row'>
+    <div class='col-sm-7'>
+      <h2>{{title}}</h2>
+      
+      <h3 class="text-success">{{money price}}</h3>
+      <p class="text-muted">{{description}}</p>
+
+      {{render 'product/reviews' reviews}}
+
+      {{render 'product/reviews/new' this }}
+    </div>
+    <div class='col-sm-5'>
+      <img {{bind-attr src='image'}} class='img-thumbnail img-rounded'/>
+    </div>
+  </div>
+    {{/modal-dialog}}
+</script>
+
+<script type="text/x-handlebars" data-template-name='product/reviews'>
+<h3>Reviews</h3>
+<ul>
+{{#each}}
+  <li><p>{{review}}</p></li>
+{{else}}
+  <li><p class='text-muted'><em>No reviews yet. Be the first to write one!</em></p></li>
+{{/each}}
+</ul>
+</script>
+
+<script type="text/x-handlebars" data-template-name='product/reviews/new'>
+{{#if reviewText}}
+  <p>{{reviewText}}</p>
+{{/if}}
+{{textarea valueBinding='reviewText'}}
+<button {{action 'createReview'}} class='btn-primary right'>Review</button>
+</script>
+
+<script type="text/x-handlebars" data-template-name='contacts'>
+  <div class='row'>
+  <div class='col-sm-2'>
+    <div class="list-group">
+      {{#each}}
+        {{#link-to 'contact' this classNames="list-group-item"}}
+          {{name}}
+        {{/link-to}}
+      {{/each}}
+    </div>
+  </div>
+  <div class='col-md-10'>
+    {{outlet}}
+  </div>
+</div>
+</script>
+
+<script type="text/x-handlebars" data-template-name='contacts/index'>
+  <h1>About</h1>
+  <p>The Flint &amp; Flame is made possible by the following shining examples.</p>
+  <p>Need to writeup something related to the theme here</p>
+  <p>{{open}}</p>
+</script>
+
+<script type="text/x-handlebars" data-template-name='contact'>
+  <img {{bind-attr src="avatar"}} class='pull-left' />
+  <h2>{{name}}</h2>
+  <p>Joined: {{joined}}</p>
+  <p>{{description}}</p>
+</script>
+
+
+<script type="text/x-handlebars" data-template-name='credits'>
+  <h2>Credits</h2>
+  <p>Here are a few of the technologies that make this site possible.
+  <ul>
+    <li><a href='http://emberjs.com/'>Ember.js</a></li>
+    <li><a href='http://handlebarsjs.com/'>Handlebars.js</a></li>
+    <li><a href='https://github.com/emberjs/data'>Ember Data</a></li>
+    <li><a href='http://jquery.com/'>jQuery</a></li>
+    <li><a href='http://getbootstrap.com/'>Twitter Bootstrap</a></li>
+  </ul>
+</script>
+    
+    
 </body>
 </html>
