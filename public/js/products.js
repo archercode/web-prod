@@ -10,8 +10,8 @@ App.ProductsRoute = Ember.Route.extend({
     var store = this.store;
 
     return Ember.$.getJSON(url).then(function(data) {
-        console.log('got data from recipes');
-        console.log(data);
+        //console.log('got data from recipes');
+        //console.log(data);
 
 
         var arrData = [];

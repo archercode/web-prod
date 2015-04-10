@@ -111,10 +111,11 @@
     {{#each filterComputed}}
     <li>{{name}} - {{amount}}</li>
     {{/each}}
-    {{totalTweetsUnread}}
+    {{subTotal}}
     </ul>
+    <!--
     <h1>{{totalAmount}}</h1>
-
+    -->
        <button type="button" class="btn btn-primary" {{action "ok" }}>checkout</button>
     </div>
   </div>
@@ -161,20 +162,20 @@
             <li class="filter-item horizontal-item">
           {{#link-to 'products.sale' classNames="list-group-item"}}
     <!--        <span class="badge">{{onSale}}</span> -->
-                <h3>On Sale</h3>
+                <h3>Boards</h3>
           {{/link-to}}
             </li>
             <li class="filter-item horizontal-item">
           {{#link-to 'products.seasonal' classNames="list-group-item"}}
     <!--        <span class="badge">{{seasonal}}</span> -->
-                <h3>Seasonal</h3>
+                <h3>Sensors</h3>
           {{/link-to}}
             </li>
             <li class="filter-item horizontal-item">
 
           {{#link-to 'products.sensor' classNames="list-group-item"}}
     <!--        <span class="badge">{{sensor}}</span> -->
-                <h3>Sensors</h3>
+                <h3>Robotics</h3>
           {{/link-to}}
             </li>
         </ul>
