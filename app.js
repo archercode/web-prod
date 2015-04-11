@@ -2,11 +2,13 @@
 /**
  * Module dependencies.
  */
+'use strict';
 
 var express = require('express')
   , routes = require('./routes')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , nodemailer = require('nodemailer/lib/nodemailer');
 
 var app = express();
 
@@ -49,6 +51,10 @@ var data =
     }
 ];
 
+
+
+
+
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
@@ -72,6 +78,45 @@ app.get('/', routes.index);
 app.get('/recipes', function(req, res) {
     res.send(data);
 });
+
+app.get('/email', function(req, res) {
+
+
+  try{
+  // create reusable transporter object using SMTP transport
+  var transporter = nodemailer.createTransport("SMTP",{
+    service: 'Gmail',
+    auth: {
+        user: 'frd.concepcion@gmail.com',
+        pass: 'F3rdin@nd'
+    }
+  });
+
+  // setup e-mail data with unicode symbols
+  var mailOptions = {
+      from: 'frd.concepcion@gmail.com', // sender address
+      to: 'tonnyquintos@gmail.com', // list of receivers
+      subject: 'Hello ', // Subject line
+      text: 'Hello world', // plaintext body
+      html: 'Hello world' // html body
+  };
+
+  // send mail with defined transport object
+  transporter.sendMail(mailOptions, function(error, info) {
+      if (error) {
+          console.log(error);
+      } else {
+          console.log('Message sent: ' + info.response);
+      }
+  });
+
+}catch(e){
+  console.log("error ");
+  console.log(e);
+}
+
+});
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

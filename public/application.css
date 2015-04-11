@@ -14,3 +14,26 @@
 }
 
 .nav > li { cursor: pointer; }
+
+
+/* For vcard under ordering */
+
+.vcard {
+  border: 1px solid #dcdcdc;
+  max-width: 12em;
+  padding: 0.5em;
+}
+.vcard li {
+  list-style: none;
+}
+.vcard .fn {
+  font-weight: bold;
+}
+.vcard .email {
+  font-family: monospace;
+}
+
+label {
+  display: block;
+  margin-top: 0.5em;
+}

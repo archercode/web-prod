@@ -16,7 +16,7 @@ App.CheckoutController = Ember.ArrayController.extend({
     	//'amount', 0);
   }.property('@each.amount'),
 
-  
+  /*
   subTotal: function() {
         var users = this.get("model").content;
         var ret = 0;
@@ -26,8 +26,8 @@ App.CheckoutController = Ember.ArrayController.extend({
         return ret;
     }.property("@each.amount"),
   
-  /*
+  */
   amount: Ember.computed.mapBy('model', 'amount'),
   subTotal: Ember.computed.sum('amount'),
-	*/
+	
 });
