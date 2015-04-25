@@ -1,24 +1,20 @@
-var App = Ember.Application.createWithMixins({
+window.App = Ember.Application.createWithMixins({
   LOG_TRANSITIONS: true,
-  ready: function() {
-    App.GetRecipeItems();   // this triggers an AJAX call to Clojure REST interface
-  }
 });
 
 App.ApplicationRoute = Ember.Route.extend({
+  model: function () {
+    return this.store.find('cart');
+  },
   actions: {
     showModal: function(name, model) {
-        console.log("app route showModal!!");
-        console.log(name);
-        console.log(model);
-        
         var modalController = this.controllerFor(name);
         modalController.set('model', model);
         this.render(name, {
         into: 'application',
         outlet: 'modal',
         model: model,
-           controller: modalController 
+        controller: modalController 
       });
     },
     removeModal: function() {
@@ -26,27 +22,57 @@ App.ApplicationRoute = Ember.Route.extend({
         outlet: 'modal',
         parentView: 'application'
       });
+    },
+    logout: function(){
+      Ember.$.getJSON("/email").then(function(data) {
+        var arrData = [];
+        for (var i = 0, len = data.length; i < len; i++) {
+            store.createRecord('product', {    
+                title:       data[i]['title'],
+                price:       data[i]['price'],
+                description: data[i]['description'],
+                type:        data[i]['type'],
+                image:       data[i]['image']
+            });
+        }
+        return data;
+      });
     }
   }
 });
 
+
+App.ApplicationController = Ember.ObjectController.extend({
+  model: function () {
+    return this.modelFor('cart');
+  },
+  actions: {
+    deleteItem:function(key){
+        var cart = this.store.all('cart');
+        var store = this.store;
+        var todo = this.get('model');
+        todo.deleteRecord();
+        todo.save();
+    }
+  },
+});
+
+
 App.Router.map(function() {
-
-  /* TONNY 04.04.15 */
-  this.route('checkout');
-
-
   this.route('credits');
-  this.resource('contacts', function() {
-    this.resource('contact', { path: '/:contact_id' });
-  });
 
-  this.resource('products', function() {
-    this.route('seasonal');
-    this.route('sale');
-    this.route('sensor');
-    this.route('microcontroller');
-    this.resource('product', { path: '/:product_id' });
+  this.resource('products',
+   { path: '/' }, function() {
+
+    this.route('boards');
+    this.route('sensors');
+    this.route('robotics');
+    
+    //this.route('seasonal');
+    //this.route('sale');
+      this.resource('product', { 
+        path: '/:product_id' 
+      });
   });
 });
 
@@ -58,26 +84,21 @@ if (window.history && window.history.pushState) {
 }
 
 
-// Index
+/*
 App.IndexRoute = Ember.Route.extend({
   model: function() {
     return this.store.findAll('product');
   }
 });
+
 App.IndexController = Ember.ArrayController.extend({
   onSale: function() {
-    //return this.filterProperty('isOnSale', true).slice(0,3);
     return this.filterBy('isOnSale').slice(0,3);
   }.property('@each.isOnSale'),
-
-  // productCount: function() {
-  //   return this.get('length');
-  // }.property('length')
-
   productCount: Ember.computed.alias('length')
 });
 
-
+*/
 
 /*
  * ModalDialogComponent
@@ -90,12 +111,12 @@ App.ModalDialogComponent = Ember.Component.extend({
       this.sendAction('ok');
     }
   },
-  show: function() {
-    jQuery.noConflict();
-    this.$('.modal').modal().on('hidden.bs.modal', function() {
-      this.sendAction('close');
-    }.bind(this));
-  }.on('didInsertElement')
+    show: function() {
+      jQuery.noConflict();
+      this.$('.modal').modal().on('hidden.bs.modal', function() {
+        this.sendAction('close');
+      }.bind(this));
+    }.on('didInsertElement')
 });
 
 
@@ -112,34 +133,66 @@ App.LogoutModalController = Ember.ObjectController.extend({
 });
 
 
+App.CheckoutModalController = Ember.ObjectController.extend({
+  actions: {
+    logout: function() {
+      alert('logout');
+    },
+  }
+});
+
 
 App.ProductDetailModalController = Ember.ObjectController.extend({
     getTitle: function(){
         return this.get('model').get('title')
     }.property(),
-   
     actions: {
-      getTitle: function(){
-          return this.get("title");
-      },
-      // YesButton
-      logout: function(args) {
-      //alert('prodDetail');
-      var title = this.get('model').title;//.get('title');
-      var price = this.get('model').price;//.get('price');
-      console.log(title, price);
+    getTitle: function(){
+        return this.get("title");
+    },
+    buyProduct: function(args) {
 
-      var newProduct = this.store.createRecord('cart',
-      {   
-        name: title,
-        amount: price
-      }),
-        controller = this;
-        newProduct.save();
-        console.log("product " + name + title + "was added to cart");
+        var bool = false;
+        var tempData = [];
+        if(window.localStorage['ctr-store'] != null){
+          var localData = JSON.parse(localStorage['ctr-store']);
+          var storedItems = localData.cart.records;
+
+          for (var key in storedItems) {
+              if (storedItems.hasOwnProperty(key)) {
+                if(storedItems[key].name == this.get('model').title){
+
+                  localData.cart.records[key].quantity++;
+                  var existing = this.store.update('cart',localData.cart.records[key]);
+                  bool = true;
+                  localStorage['ctr-store'] = JSON.stringify(localData);
+                  break; 
+                }
+              }
+          }
+        }
+        
+        if (!bool){
+            var cartItem = this.store.createRecord('cart', {    
+                  name: this.get('model').title,
+                  amount:this.get('model').price,
+                  quantity:1
+            }
+          );
+            cartItem.save();
+        }
+      },
+    }, 
+    find: function(key) {
+      if( !Ember.isNone(key) ) {
+        var items = [];
+        var storedItems = JSON.parse(localStorage[key]);
+        storedItems.forEach(function(item){
+          items.pushObject(item);
+        });
+        return items;
+      }
     }
-  }, 
-    
 });
 
 // Handlebars

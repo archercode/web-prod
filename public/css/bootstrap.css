@@ -3928,7 +3928,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #21C3F3;
+  background-color: #43c0ef; /*#21C3F3;*/
   border-color: none;
 }
 .navbar-default .navbar-brand {

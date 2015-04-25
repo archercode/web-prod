@@ -1,10 +1,11 @@
+App.ApplicationAdapter = DS.LSAdapter.extend({
+  namespace: 'ctr-store'
+});
 
 
-// Data
-App.ApplicationAdapter = DS.FixtureAdapter.extend();
-//App.ApplicationAdapter = DS.RESTAdapter.extend();
 var attr = DS.attr;
-App.Product = DS.Model.extend({
+
+App.Product  = DS.Model.extend({
   title: DS.attr(),
   price: DS.attr(),
   description: DS.attr(),
@@ -15,7 +16,7 @@ App.Product = DS.Model.extend({
   type: DS.attr(),
   reviews: DS.hasMany('review', {async: true})
 });
-
+/*
 App.Product.FIXTURES = [
   {
     id: 1,
@@ -90,7 +91,7 @@ App.Product.FIXTURES = [
     imageCredit: ''
   }
 ]
-
+*/
 App.Review = DS.Model.extend({
   review: DS.attr('string'),
   reviewedAt: DS.attr('date'),
@@ -105,6 +106,7 @@ App.Review.FIXTURES = [
   { id: 104, product: 3, review: "Not worth it." },
 ]
 
+/*
 App.Contact = DS.Model.extend({
   name: DS.attr(),
   avatar: DS.attr(),
@@ -135,19 +137,19 @@ App.Contact.FIXTURES = [
     description: 'description here'
   }
 ];
-
-
-/* TONNY 04.04.15 */
+*/
 
 App.Cart = DS.Model.extend({
   name: DS.attr('string'),
   amount: DS.attr('number'),
+  quantity: DS.attr('number')
 });
 
 App.Cart.FIXTURES = [
   {
     id: 1,
-    name: '',
-    amount: 0
+    name: 'sample',
+    amount: 0,
+    quantity: 0
   }
 ]

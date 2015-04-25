@@ -36,7 +36,7 @@
 
 .navbar-default .navbar-nav > li {
   cursor: pointer;
-  background-color: #21C3F3;
+  background-color: #43c0ef; /*#21C3F3;*/
   padding: 12px 12px;
   margin-top: -7px;
   color: #f0eee1;
