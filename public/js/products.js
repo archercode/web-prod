@@ -9,9 +9,11 @@ App.ProductsRoute = Ember.Route.extend({
             store.createRecord('product', {    
                 title:       data[i]['title'],
                 price:       data[i]['price'],
+                model:       data[i]['model'],
                 description: data[i]['description'],
                 type:        data[i]['type'],
-                image:       data[i]['image']
+                image:       data[i]['image'],
+                //link:        data[i]['link']
             });
         }
         return data;
@@ -21,18 +23,6 @@ App.ProductsRoute = Ember.Route.extend({
 
 
 ///////////////////////////////////////////////////////////
-Ember.Handlebars.helper('autocomplete', Ember.View.extend({
-  templateName: 'controls/autocomplete',
-  filteredList: function() {
-    var list = this.get('product'),
-        filter = this.get('filter');
-
-    if (!filter) { return list.model; }
-    return list.model.filter(function(item) {
-      return item.title.toLowerCase().indexOf(filter) !== -1;
-    });
-  }.property('list.@each', 'filter')
-}));
 ///////////////////////////////////////////////////////////
 
 
@@ -68,9 +58,9 @@ App.ProductsIndexRoute = Ember.Route.extend({
     willTransition: function(){
       prodController.set('previousTransition', "tomorrow");
     },
-  ref:function(){
-    this.refresh();
-  },
+    ref:function(){
+      this.refresh();
+    },
 },
 
 /*  setupController: function(controller, model) {

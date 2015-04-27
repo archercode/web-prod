@@ -18,11 +18,13 @@
   <!-- // <script src="js/contacts.js"></script> -->
   <!-- //   <script src="js/checkout.js"></script> -->
   <!-- // <script src="js/app.js"></script>   -->
+  
+
   <script src="js/data.js"></script>
   <script src="js/models/recipe.js"></script>
   <!-- // <script src="js/ajax_helpers.js"></script>   -->
   <script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
-  <link href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <!-- <link href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'> -->
   <link href="css/bootstrap.css" media="screen" rel="stylesheet" />
 </head>
 
@@ -47,9 +49,14 @@
   <footer class='container'>
     <hr />
     <p class='pull-left'>&copy; 2015 ArcherCode </p>
+    
     <p class='pull-right'>{{#link-to 'credits'}}Credits{{/link-to}}</p>
+    <p class='pull-right'>{{#link-to 'about'}}About{{/link-to}}</p>
+    
   </footer>
 </script>
+
+
 
 <script type="text/x-handlebars" data-template-name="checkout-modal">
 {{#modal-dialog title='checkout' ok='logout' close='removeModal' yesButton='Order' hasCloseBtn=True}}
@@ -64,27 +71,53 @@
       </ul>
         Total items: {{itemOrderCount}}
         Total amount: {{subTotal}}
+        <h3>
+          Payment Options - {{selectedVal}}
+        </h3>
+          {{ext-radio content=radioContent value=selectedVal}}
+
+          {{#if optionBank }}
+            <div>
+              <h3>
+                you may depoist the amount to me
+              </h3>
+            </div>
+          {{/if}}
+
+          {{#if optionMeet }}
+          <div>
+              <h3>
+                lets talk to discuss your meet up point
+              </h3>
+            </div>
+          {{/if}}
+
+
     </div>
 
-      {{v-card fn=firstName street-address=address locality=city usState=usState zip=zipCode email=email}}
-  <h3 class="subheader">Edit this card:</h3>
-  <label>First Name</label>
-  {{input type="text" value=firstName}}
+{{v-card fn=firstName street-address=address locality=city usState=usState zip=zipCode email=email phone=phone}}
+    <h3 class="subheader">Edit this card:</h3>
+    <label>First Name</label>
+    {{input type="text" value=firstName}}
 
-  <label>Address</label>
-  {{input type="text" value=address}}
+    <label>Address</label>
+    {{input type="text" value=address}}
 
-  <label>City</label>
-  {{input type="text" value=city}}
+    <label>City</label>
+    {{input type="text" value=city}}
 
-  <label>Region</label>
-  {{input type="text" value=usState}}
+    <label>Region</label>
+    {{input type="text" value=usState}}
 
-  <label>Zip Code</label>
-  {{input type="text" value=zipCode}}
+    <label>Zip Code</label>
+    {{input type="text" value=zipCode}}
 
-  <label>Email address</label>
-  {{input type="text" value=email}}
+    <label>Email address</label>
+    {{input type="email" value=email}}
+
+    <label>CellPhone</label>
+    {{input type="text" value=phone}}
+
 {{/modal-dialog}}
 </script>
 
@@ -93,9 +126,18 @@
     <li class="fn">{{fn}}</li>
     <li class="street-address">{{street-address}}</li>
     <li class="locality">{{locality}}</li>
-    <li><span class="state">{{usState}}</span>, <span class="zip">{{zip}}</span></li>
+    <li><span class="state">{{usState}}</span> <span class="zip">{{zip}}</span></li>
     <li class="email">{{email}}</li>
+    <li class="phone">{{phone}}</li>
   </ul>
+</script>
+
+<script type="text/x-handlebars" data-template-name='components/ext-radio'>  
+    {{#each content}}
+        <label> {{label}}
+            {{radio-button value=value name=view.name selection=view.value}}
+        </label>
+    {{/each}}
 </script>
 
 
@@ -291,6 +333,16 @@
     <li><a href='http://jquery.com/'>jQuery</a></li>
     <li><a href='http://getbootstrap.com/'>Twitter Bootstrap</a></li>
   </ul>
+</script>
+
+<script type="text/x-handlebars" data-template-name='about'>
+
+Rockin' Circuits is an online electronics store that sells electronics parts and provide software development services to make your electronics, mobile, web projects possible. We help aim to unleash your inner inventor.
+
+Rockin' Circuits is a solid believer in the idea of open source technology. We believe an open market is a productive market. We belief that open source technology promotes innovation and creativity.
+
+We design and develop simple solutions to complex problems.
+
 </script>
 </body>
 </html>
