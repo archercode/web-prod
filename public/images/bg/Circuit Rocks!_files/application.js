@@ -1,44 +1,13 @@
 window.App = Ember.Application.createWithMixins({
   LOG_TRANSITIONS: true,
-    ready: function() {
-        
-        function setTyped(){
-        
-  $(".typed").typed({
-    strings: ["<i>Ideas.</i> ^1500<span class='text_blue'>Build it.</span> ^1500<b>Rock on!</b>"],
-      loop: true, 
-    typeSpeed: 20, 
-      contentType: 'html'
-  });
-        
-            
-        if($(".text_ideas").length == 0)
-            setTimeout(setTyped, 1000);
-            
-        }
-        
-    setTimeout(function(){
-        setTyped();
-            
-   }, 1000);
-        
-  }
 });
 
 App.ApplicationRoute = Ember.Route.extend({
-  
   model: function () {
     return this.store.find('cart');
   },
-    show: function(){
-    
-    
-    
-    },
   actions: {
     showModal: function(name, model) {
-      console.log('name:');
-      console.log(name);
         var modalController = this.controllerFor(name);
         modalController.set('model', model);
         this.render(name, {
@@ -75,11 +44,9 @@ App.ApplicationRoute = Ember.Route.extend({
 
 
 App.ApplicationController = Ember.ObjectController.extend({
-
   model: function () {
     return this.modelFor('cart');
   },
-
   actions: {
     deleteItem:function(key){
         var cart = this.store.all('cart');
@@ -94,7 +61,7 @@ App.ApplicationController = Ember.ObjectController.extend({
 
 App.Router.map(function() {
   this.route('credits');
-  this.route('about');
+
   this.resource('products',
    { path: '/' }, function() {
 
@@ -167,108 +134,16 @@ App.ModalDialogComponent = Ember.Component.extend({
 App.LogoutModalController = Ember.ObjectController.extend({
   actions: {
     logout: function() {
-      alert('logouttModal');
+      alert('logout');
     }
   }
 });
 
-App.RadioButton = Ember.Component.extend({
-    tagName : 'input',
-    type : 'radio',
-    attributeBindings : [ 'name', 'type', 'value', 'checked:checked' ],
-    click : function() {
-        this.set("selection", this.$().val());
-    },
-    checked : function() {
-        return this.get('value') === this.get('selection');
-    }.property('selection')
-});
-
-Em.Handlebars.helper('radio-button', App.RadioButton);
-
-App.ExtRadioComponent = Ember.Component.extend({
-    name: 'radio'
-});
-
 
 App.CheckoutModalController = Ember.ObjectController.extend({
-  selectedVal: 'bank',
-
-  radioContent: [
-        {label: 'Bank', value: 'bank'},
-        {label: 'Meetup', value: 'meet'},
-        //{label: 'PayPal', value: 'paypal'},
-        //{label: 'Credit Card', value: 'cc'},
-  ],
-  
-  optionBank: true,
-  optionMeet: false,
-  optionPayP: false,    
-
-  onChangeRadio : function () {
-      if (this.selectedVal === 'bank'){
-        this.set('optionBank', true);
-        this.set('optionMeet', false);
-      }
-      if (this.selectedVal === 'meet'){
-        this.set('optionBank', false);
-        this.set('optionMeet', true);
-      }
-  }.observes('selectedVal'),
-
-
-
-  disabled: function() {
-    return Ember.isEmpty(this.get('firstName'));
-  }.property('firstName'),
-  
-  
-  firstName: 'Tonny',
-  address: '123 Example St.',
-  city: 'Manila',
-  usState: 'Metro Manila',
-  zipCode: '1234',
-  email: 'tonnyquintos@gmail.com',
-  phone: '0915',
-
-
-/*
-  fieldChecker: function(){
-    return function(data){
-      return data = [
-       Ember.isEmpty(this.get('firstName')),
-       Ember.isEmpty(this.get('address')), 
-       Ember.isEmpty(this.get('city')), 
-       Ember.isEmpty(this.get('usState')), 
-       Ember.isEmpty(this.get('zipCode')), 
-       Ember.isEmpty(this.get('email'))
-      ];
-     }
-  }.property('firstName', 'address', 'city', 'usState', 'zipCode', 'email'),
-*/
-
   actions: {
     logout: function() {
-      var data = [
-       this.get('firstName'),
-       this.get('address'), 
-       this.get('city'), 
-       this.get('usState'), 
-       this.get('zipCode'), 
-       this.get('email')
-      ];
-
-      data.forEach(function(item, index) {
-        //console.log('Item %@: %@'.fmt(index, item));
-        //if (Ember.isEmpty(item) === true){
-        console.log(Ember.isEmpty(item), index);
-          //alert("hide");
-        //}
-      });
-    },
-    recvPayment: function(params){
-      console.log(params);
-
+      alert('logout');
     },
   }
 });

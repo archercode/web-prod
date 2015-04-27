@@ -60,7 +60,7 @@ var data =
       "title": 'Waterproof DS18B20 Digital temperature sensor',
       "price": 300,
       'model':'DFR0198',
-      "description": 'This is a waterproofed version of the DS18B20 Temperature sensor. Handy for when you need to measure something far away, or in wet conditions. While the sensor is good up to 125°C the cable is jacketed in PVC so we suggest keeping it under 100°C. Because they are digital, you do nott get any signal degradation even over long distances! The DS18B20 provides 9 to 12-bit (configurable) temperature readings over a 1-Wire interface, so that only one wire (and ground) needs to be connected from a central microprocessor.Usable with 3.0-5.5V systems.',
+      "description": 'This is a waterproofed version of the DS18B20 Temperature sensor. Handy for when you need to measure something far away, or in wet conditions. While the sensor is good up to 125Â°C the cable is jacketed in PVC so we suggest keeping it under 100Â°C. Because they are digital, you do nott get any signal degradation even over long distances! The DS18B20 provides 9 to 12-bit (configurable) temperature readings over a 1-Wire interface, so that only one wire (and ground) needs to be connected from a central microprocessor.Usable with 3.0-5.5V systems.',
       "type": 'sensors',
       "image": 'images/products/DFR0198.jpg',
     },
@@ -115,7 +115,7 @@ var data =
       "image" : 'images/products/FIT0188.jpg'
     },
     {
-      "title": 'Bluno ­Bluetooth 4.0 Micro­controller Compatible with Arduino Uno',
+      "title": 'Bluno Â­Bluetooth 4.0 MicroÂ­controller Compatible with Arduino Uno',
       "price": 1300,
       'model': 'DFR0267',
       "description": 'Its time to get Bluetooth 4.0 into your project and sync it up with your phone! For aficionados of smart devices and wearables with this new tech (BT4.0 BLE), now you can go further than hacking things apart to start prototyping with your Arduino. Bluno is first of its kind in intergrating BT 4.0(BLE) module into Arduino Uno, making it an ideal prototyping platform for both software and hardware developers to go BLE. You will be able to develop your own smart bracelet , smart pedometer and more. Through the low-power Bluetooth 4.0 technology, real-time low energy communication can be made really easy.',
@@ -193,7 +193,7 @@ var data =
       "image" : 'images/products/SEN0098.jpg'
     },
     {
-      "title":'WiDo ­ Open Source IoT Node',
+      "title":'WiDo Â­ Open Source IoT Node',
       "model": 'DFR0321',
       "price": 2000,
       "description": "Wido is an Arduino compatible WIFI IoT Node development board, which integrates with WG1300 WIFI solution. The microcontroller of Wido is ATMEL ATmega32U4.",
@@ -227,7 +227,7 @@ var data =
       "image" : 'images/products/SEN0131.jpg'
     },
     {
-      "title":'DC­-DC boost converter',
+      "title":'DCÂ­-DC boost converter',
       "model": 'DFR0123',
       "price": 400,
       "description": "This is multipurpose boost converter, a breakout board. Supply voltage is as low as 3.7v and it boosts to as high as 34v.  With this module, you can now power your Arduino with our 3.7V lipo battery or use it to regulate any other project. The tiny form factor and its simplicty makes it for a very nice addition for all projects requiring an extra power module.",
@@ -245,11 +245,11 @@ var data =
     /*
     {
       "title":'LED Current Meter 10A',
-      "model": 'DFR0244­',
+      "model": 'DFR0244Â­',
       "price": 400,
       "description": "URM37 V4.0 Ultrasonic Sensor comes with a temperature correction which is a very unique feature in its class. URM37 V4.0 (last version) has already been a very good realization of ultrasonic switch and serial (TTL and RS232 level optional), pulse output function, the module can also control a servo rotation to realize a spatial ultrasound scanner. On this basis we have to upgrade the function",
       "type"  : 'robotics',
-      "image" : 'images/products/DFR0244­.jpg'
+      "image" : 'images/products/DFR0244Â­.jpg'
     },
     */
     {
@@ -271,7 +271,7 @@ var data =
     },
     */
     {
-      "title":'DFPlayer ­ A Mini MP3 Player',
+      "title":'DFPlayer Â­ A Mini MP3 Player',
       "price": 420,
       "model": 'DFR0299',
       "description": "Sing for the moment! The DFPlayer Mini is a small and low cost MP3 module with an simplified output directly to the speaker. The module can be used as a stand alone module with attached battery, speaker and push buttons or used in combination with an Arduino UNO or any other with RX/TX capabilities. ",
@@ -300,7 +300,7 @@ var data =
     
     /*
     {
-      "title":'Arduino Yún',
+      "title":'Arduino YÃºn',
       "model": 'DFR0297',
       "price": 4000,
       "description": "URM37 V4.0 Ultrasonic Sensor comes with a temperature correction which is a very unique feature in its class. URM37 V4.0 (last version) has already been a very good realization of ultrasonic switch and serial (TTL and RS232 level optional), pulse output function, the module can also control a servo rotation to realize a spatial ultrasound scanner. On this basis we have to upgrade the function",

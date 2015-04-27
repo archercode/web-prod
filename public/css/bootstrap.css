@@ -266,7 +266,7 @@ body {
   font-size: 14px;
   line-height: 1.428571429;
   color: #222222;
-  background-color: #fdfdfd;
+  background-color: #ffffff;/*#fdfdfd;*/
 }
 input,
 button,
@@ -1398,7 +1398,7 @@ th {
   border-top: 2px solid #dddddd;
 }
 .table .table {
-  background-color: #fdfdfd;
+  background-color: #ffffff; /*fdfdfd;*/
 }
 .table-condensed > thead > tr > th,
 .table-condensed > tbody > tr > th,
@@ -4683,7 +4683,7 @@ a.thumbnail.active {
   margin-right: 5px;
 }
 a.list-group-item {
-  color: #555555;
+  color: #ffffff;
 }
 a.list-group-item .list-group-item-heading {
   color: #333333;
