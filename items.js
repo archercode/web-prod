@@ -54,7 +54,7 @@ var data =
       "title":'Real Time Clock Module',
       "price": 300,
       "model": 'DFR0151',
-      "description": 'The DS1307 Real Time Clock developed by one of our designers: Waiman.  The module comes fully assembled and pre-programmed with the current time (ok, so its our current time - MST). The included Lithium coin cell battery (CR1225 41mAh) will run the module for a minimum of 9 years (17 years typical) without external 5V power. The DS1307 is accessed via the I2C protocol.',
+      "description": 'The module comes fully assembled and pre-programmed with the current time (ok, so its our current time - MST). The included Lithium coin cell battery (CR1225 41mAh) will run the module for a minimum of 9 years (17 years typical) without external 5V power. The DS1307 is accessed via the I2C protocol.',
       "type"  : 'robotics',
       "image" : 'images/products/DFR0151.jpg'
     },
@@ -105,7 +105,7 @@ var data =
       "price": 1300,
       'model': 'DFR0267',
       "description": 'Its time to get Bluetooth 4.0 into your project and sync it up with your phone! For aficionados of smart devices and wearables with this new tech (BT4.0 BLE), now you can go further than hacking things apart to start prototyping with your Arduino. Bluno is first of its kind in intergrating BT 4.0(BLE) module into Arduino Uno, making it an ideal prototyping platform for both software and hardware developers to go BLE. You will be able to develop your own smart bracelet , smart pedometer and more. Through the low-power Bluetooth 4.0 technology, real-time low energy communication can be made really easy.',
-      "type": 'sensors',
+      "type": 'boards',
       "image": "images/products/DFR0267.jpg",
     },
     {
@@ -147,7 +147,7 @@ var data =
     {
       "title":'DFRduino UNO R3',
       "model": 'DFR0216',
-      "price": 2400,
+      "price": 750,
       "description": "URM37 V4.0 Ultrasonic Sensor comes with a temperature correction which is a very unique feature in its class. URM37 V4.0 (last version) has already been a very good realization of ultrasonic switch and serial (TTL and RS232 level optional), pulse output function, the module can also control a servo rotation to realize a spatial ultrasound scanner. On this basis we have to upgrade the function",
       "type"  : 'boards',
       "image" : 'images/products/DFR0216.jpg'
@@ -179,7 +179,7 @@ var data =
       "image" : 'images/products/SEN0098.jpg'
     },
     {
-      "title":'WiDo ­ Open Source IoT Node',
+      "title":'WiDo ­Open Source IoT Node',
       "model": 'DFR0321',
       "price": 2000,
       "description": "Wido is an Arduino compatible WIFI IoT Node development board, which integrates with WG1300 WIFI solution. The microcontroller of Wido is ATMEL ATmega32U4.",
@@ -213,7 +213,7 @@ var data =
       "image" : 'images/products/SEN0131.jpg'
     },
     {
-      "title":'DC­-DC boost converter',
+      "title":'DC­ to DC boost converter',
       "model": 'DFR0123',
       "price": 400,
       "description": "This is multipurpose boost converter, a breakout board. Supply voltage is as low as 3.7v and it boosts to as high as 34v.  With this module, you can now power your Arduino with our 3.7V lipo battery or use it to regulate any other project. The tiny form factor and its simplicty makes it for a very nice addition for all projects requiring an extra power module.",

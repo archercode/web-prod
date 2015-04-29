@@ -119,8 +119,9 @@ list-style: none;
 }
 
 .prod_filter_icons{
-  width: 30% !important;
+  width: 20% !important;
   padding-right: 15px;
+  padding-top: 4px;
 }
 
 .home_links{  
@@ -128,8 +129,8 @@ list-style: none;
 }
 
 .cart_itemCount{
-  position: absolute;
-  top: 9px;
+  position: relative;
+  top: -30px;
   left: 20px;
     font-size:80%;
 /*color: #E74C3C;*/
@@ -201,8 +202,8 @@ list-style: none;
 }
 
 .icon_circle{
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background: #ffffff;
   display: block;
   border-radius: 50%; 
@@ -251,5 +252,34 @@ list-style: none;
 
 .prod_filter_body{
       top: 0px;
+  /*position: absolute;*/
+}
+
+.element_header_bar{
+  width: 30%;
+  border-bottom: 1px solid #ccc;
+}
+
+.element_header_bar.left{ 
+  left: 10px; 
+}
+
+.element_header_bar.right{ 
+  right: 10px; 
+}
+
+.element_header_bar_parent {
+  width: 100%;
+  margin: 0 auto;
+  padding: 50px 0 10px 0;
+}
+.element_header_item {
+  width: 200px;  margin-bottom: 7px;
+  display: inline-block;
+}
+
+.search_bar_right{
   position: absolute;
+  right: 5%;
+  top: 0px;
 }

@@ -11,11 +11,17 @@
   <script src="js/libs/handlebars-1.1.2.js"></script>
   <script src="js/libs/ember-1.7.0.js"></script>
   <script src="js/libs/typed.js"></script>
+  <script src="js/libs/bootstrap.js"></script>
   <script src="ember-data.js"></script>
   <script src="js/libs/localstorage_adapter.js"></script>
   <script src="accounting.js"></script>
   <script src="js/application.js"></script>
   <script src="js/products.js"></script>
+
+
+    
+  <script src="js/parallax.js"></script>
+
   <!-- // <script src="js/cart.js"></script> -->
   <!-- // <script src="js/contacts.js"></script> -->
   <!-- //   <script src="js/checkout.js"></script> -->
@@ -25,63 +31,49 @@
   <script src="js/data.js"></script>
   <script src="js/models/recipe.js"></script>
   <!-- // <script src="js/ajax_helpers.js"></script>   -->  
-  <script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
- <link href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+ <!-- <script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
+ <link href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>-->
 
   <link href="css/bootstrap.css" media="screen" rel="stylesheet" />
     
     
-    
-  <script src="js/parallax.js"></script>
 </head>
 
 <body onload="onload">
 
 <script type="text/x-handlebars" data-template-name='application'>
-
-  
-   
   <div id="main_header" class="navbar navbar-default navbar-fixed-top">
-  
-<div class="header_bg">
-</div>
-
-    <div class="container home_links">
-      {{#link-to "products" class="navbar-brand header_logo "}}Rockin' Circuits!{{/link-to}}
-      <ul class="nav navbar-nav navbar-right">
-        
-        
-        
-        <li {{action 'showModal' 'checkout-modal'  model}}><img src="images/ic_cart.png"  class="image_logo" alt="logo" height="25" width="25">
-        <div class="cart_itemCount">2</div>
-    </li>
-      </ul>
+    <div class="header_bg">
     </div>
-    
-   <div class="" id="prod_filters">
-        {{product-header-filters-top product=this tagName='div' classNames=''}}
-    </div>
-   
-    
-    
+    <div class="container home_links" >
+      {{#link-to "products" class="navbar-brand header_logo" }}Rockin Circuits!{{/link-to}}
+      <div class="" id="prod_filters">
+          {{product-header-filters-top product=this tagName='div' classNames=''}}
+      </div>
+      <div>
+        <form {{action "search" on="submit"}} class="input_line_style search_bar_right">
+          {{input value=query classNames="input_line_style"}}
+          <input type="submit" value="Search"/>
+        </form>
+      </div>
+    </div> 
   </div>
   
  
 <!-- Section 2 -->
 <section id="home_header" data-speed="4" data-type="background">
-    <div class="bg_overlay"></div>
-    <div class="container main_content_header">
-        <b><div class="element_center text_rockin " >Rockin' Circuits!</div></b>
-        <div class="element_center text_ideas">
-            
-            <span class="typed"></span>
-            
-        </div>
-        
-  {{product-header-filters product=this tagName='div' classNames='product_item_grid element_center'}}
+  <div class="bg_overlay">
+  </div>
+  <div class="container main_content_header">
+            <b>
+    <div class="element_center text_rockin " >Rockin Circuits!
+      </b>
     </div>
-    
-    
+  <div class="element_center text_ideas">
+      <span class="typed"></span>       
+    </div>
+        {{product-header-filters product=this tagName='div' classNames='product_item_grid element_center'}}
+  </div>
 </section> 
 
 
@@ -136,8 +128,6 @@
               </h3>
             </div>
           {{/if}}
-
-
     </div>
 
 {{v-card fn=firstName street-address=address locality=city usState=usState zip=zipCode email=email phone=phone}}
@@ -208,13 +198,7 @@
 
 
 
-<div>
-    <form {{action "search" on="submit"}} class="input_line_style">
-      {{input value=query classNames="input_line_style"}}
-      <input type="submit" value="Search"/>
-    </form>
-</div>
-<div class="row">
+<div class="row" id="scrollToThis">
   <div>
     {{outlet}}
     {{outlet modal}}
@@ -224,35 +208,36 @@
 
 <script type="text/x-handlebars" data-template-name='components/product-header-filters-top'>
     
-    
-        <div class="prod_filter_bg">
-        </div>
     <div class='prod_filter_body'>
       <div>
           <ul class="nav-justified prod_filter_icons">
-
             <li class="li_no_style prod_filter_icon">
           {{#link-to 'products.boards' classNames="icon_circle"}}
-                <img src="images/icons/Remote-Control-128.png"  class="image_logo" alt="logo" height="50" width="50">
+                <img src="images/icons/Remote-Control-128.png"  class="image_logo" alt="logo" height="40" width="40">
           {{/link-to}}
             </li>
             <li class="li_no_style prod_filter_icon">
           {{#link-to 'products.sensors' classNames="icon_circle"}}
                 
-                <img src="images/icons/Modem-Wireless-128.png"  class="image_logo" alt="logo" height="50" width="50">
+                <img src="images/icons/Modem-Wireless-128.png"  class="image_logo" alt="logo" height="40" width="40">
           {{/link-to}}
             </li>
             <li class="li_no_style prod_filter_icon">
           {{#link-to 'products.robotics' classNames="icon_circle"}}
                 
-                <img src="images/icons/Webcam-128.png"  class="image_logo" alt="logo" height="50" width="50">
+                <img src="images/icons/Webcam-128.png"  class="image_logo" alt="logo" height="40" width="40">
           {{/link-to}}
             </li>
-             
+
+            <li {{action 'showModal' 'checkout-modal'  modal}} class="li_no_style prod_filter_icon " >
+                <div class="icon_circle">
+                <img src="images/ic_cart.png"  class="image_logo" alt="logo" height="40" width="40">
+        <div class="cart_itemCount">2</div>
+                </div>
+            </li>
         </ul>
       </div>
     </div>   
-
 
 </script>  
     
@@ -266,9 +251,7 @@
                 <img src="images/icons/Remote-Control-256.png"  class="image_logo" alt="logo" height="128" width="128">
                 </div>
                 <h3>Boards</h3>
-                
           {{/link-to}}
-          
                 <div><h4>
                 Facilitates programming and incorporation into other circuits</h4>
                 </div>
@@ -309,8 +292,13 @@
   <!--     -->      
     
   <!--     -->
+  <div class="element_center element_header_bar_parent">
+    <div class="element_header_bar element_header_item"></div>
+    <div class="element_header_item"><h3>Products</h3></div>
+    <div class="element_header_bar element_header_item"></div>
+  </div>
         <div class='list-unstyled'>
-      {{#each }}
+      {{#each model}}
         <div class="col-md-4" {{action 'showModal' 'product-detail-modal' this}}>
         {{product-detail product=this tagName='div' classNames='product_item_grid'}}
         </div>
@@ -319,7 +307,12 @@
 </script>
 
 <script type="text/x-handlebars" data-template-name='products/boards'> 
-<h2>Boards</h2>
+
+  <div class="element_center element_header_bar_parent">
+    <div class="element_header_bar element_header_item"></div>
+    <div class="element_header_item"><h3>Boards</h3></div>
+    <div class="element_header_bar element_header_item"></div>
+  </div>
 <div class='list-unstyled'>
   {{#each}}
     <div class="col-md-4" {{action 'showModal' 'product-detail-modal' this}}>
@@ -330,7 +323,12 @@
 </script>
 
 <script type="text/x-handlebars" data-template-name='products/sensors'> 
-<h2>Sensors</h2>
+
+  <div class="element_center element_header_bar_parent">
+    <div class="element_header_bar element_header_item"></div>
+    <div class="element_header_item"><h3>Sensors</h3></div>
+    <div class="element_header_bar element_header_item"></div>
+  </div>
 <div class='list-unstyled'>
   {{#each}}
     <div class="col-md-4" {{action 'showModal' 'product-detail-modal' this}}>
@@ -341,7 +339,12 @@
 </script>
     
 <script type="text/x-handlebars" data-template-name='products/robotics'>
-<h2>Robotics</h2>
+
+  <div class="element_center element_header_bar_parent">
+    <div class="element_header_bar element_header_item"></div>
+    <div class="element_header_item"><h3>Robotics</h3></div>
+    <div class="element_header_bar element_header_item"></div>
+  </div>
 <div class='list-unstyled'>
   {{#each}}
     <div class="col-md-4" {{action 'showModal' 'product-detail-modal' this}}>
@@ -400,7 +403,7 @@
         <h4>{{product.title}}</h4>
     </div>
     <div class="col-md-4">
-        <button class='btn btn-success' {{action 'buy' product}}> ${{product.price}}</button>
+        <button class='btn btn-success' {{action 'buy' product}}> ₱{{product.price}}</button>
         
     </div>
 
@@ -413,8 +416,7 @@
 {{#modal-dialog action="close"}}
   <div class='row'>
     <div class='col-sm-7'>
-      <h2>{{title}}</h2>
-      
+      <h2>{{title}}</h2>      
       <h3 class="text-success">{{money price}}</h3>
       <p class="text-muted">{{description}}</p>
     </div>
@@ -422,8 +424,9 @@
       <img {{bind-attr src='image'}} class='img-thumbnail img-rounded'/>
     </div>
   </div>
-    {{/modal-dialog}}
+{{/modal-dialog}}
 </script>
+
 
 <script type="text/x-handlebars" data-template-name='credits'>
   <h2>Credits</h2>
@@ -438,13 +441,13 @@
 </script>
 
 <script type="text/x-handlebars" data-template-name='about'>
-
+<div id="aboutfooter">
 Rockin' Circuits is an online electronics store that sells electronics parts and provide software development services to make your electronics, mobile, web projects possible. We help aim to unleash your inner inventor.
 
 Rockin' Circuits is a solid believer in the idea of open source technology. We believe an open market is a productive market. We belief that open source technology promotes innovation and creativity.
 
 We design and develop simple solutions to complex problems.
-
+</div>
 </script>
 </body>
 </html>

@@ -23,28 +23,74 @@ App.ProductsRoute = Ember.Route.extend({
 
 
 ///////////////////////////////////////////////////////////
+App.ProductsIndexView = Ember.View.extend({
+  didInsertElement: function() {
+    var view = this;
+    $(window).bind("scroll", function() {
+      view.didScroll();
+    });
+  },
+
+  didScroll: function() {
+    if(this.isScrolledToBottom()) {
+      this.get('controller').send('loadMoreItems');
+    }
+  },
+
+  isScrolledToBottom: function(){
+  var distanceToViewportTop = (
+    $(document).height() - $(window).height());
+  var viewPortTop = $(document).scrollTop();
+ 
+    if (viewPortTop === 0) {
+      return false;
+    }
+  return (viewPortTop - distanceToViewportTop === 0);
+  },
+
+  willDestroyElement: function() {
+  $(window).unbind("scroll");
+  }
+
+});
 ///////////////////////////////////////////////////////////
 
 
+
+
 App.ProductsIndexRoute = Ember.Route.extend({
-  //model: function () { return this.modelFor('products');},
   
+  tempStorage: function(){
+    return this.modelFor('products');
+  },
+
+  showItems: 5,
+
+  mod: [],
   prodController: null,
   queryField: null, 
   beforeModel: function(transition){
     //console.log(transition);
     //console.log('beforeModel');
-
     prodController = this.controllerFor('products');
     var query = prodController.get('query');
     this.set('queryField',query);
-    prodController.set('previousTransition', "today");
+    prodController.set('previousTransition', 'today');
+
   },
   model: function(params) {
     if (!this.get('queryField')) {
-      return this.modelFor('products');
+      //return this.modelFor('products').splice(0,6);
+      //return this.tempStorage();
+      
+      for(var i = 0; i < 5; ++i){
+        this.mod[i] = this.tempStorage()[i];
+      }
+      this.incrementProperty('this.showItems', 5);
+      return this.mod;
+
     }
-    var regex = new RegExp(this.get('queryField'), "i");
+    var regex = new RegExp(this.get('queryField'), 'i');
     return this.modelFor('products').filter(function(product) {
       return regex.exec(product.title);
     });
@@ -52,27 +98,39 @@ App.ProductsIndexRoute = Ember.Route.extend({
   },
   actions: {
     queryParamsDidChange: function() {
-      // opt into full refresh
       this.refresh();
     },
     willTransition: function(){
-      prodController.set('previousTransition', "tomorrow");
+      prodController.set('previousTransition', 'tomorrow');
     },
     ref:function(){
       this.refresh();
     },
-},
-
-/*  setupController: function(controller, model) {
-    console.log(model.msg); // "Hold Your Horses"
-  }
-  */
+    loadItems: function(){
+      //this.incrementProperty('showItems');
+      var items = this.modelFor('products_index');
+      var prod = this.modelFor('products');
+      var last = prod.length;
+      //this.incrementProperty('showItems');
+      //this.incrementProperty('showItems');
+      //if (this.showItems < prod.length){
+        for(var i = this.showItems - 5 ; i < this.showItems; i++){
+          if (last > i)
+            items.addObject(prod[i]);
+        }
+        this.incrementProperty('showItems',5);
+      //}
+      //this.modelFor('products_index').splice(0, this.showItems);
+      //this.refresh();
+    },
+  },
 });
 
 // App.ProductsSeasonalRoute = Ember.Route.extend({
 App.ProductsBoardsRoute = Ember.Route.extend({
+  //spliceCount: 3,
   model: function () {
-    return this.modelFor('products').filterProperty('type', 'boards');
+    return this.modelFor('products').filterProperty('type', 'boards');//.splice(0,this.spliceCount);
   }
 });
 
@@ -92,7 +150,7 @@ App.ProductsRoboticsRoute = Ember.Route.extend({
 
 App.ProductsController = Ember.ArrayController.extend({
   needs: "products_index",
-  previousTransition: "now",
+  previousTransition: 'now',
   sortProperties: ['title'],
   count: function() {
    // console.log(this);
@@ -141,13 +199,25 @@ App.ProductsController = Ember.ArrayController.extend({
 
 App.ProductsIndexController = Ember.ArrayController.extend({
   needs: "products",
+  sortProperties: ['title'],
   modelRefresher: function(){
     this.send('ref');
     //this.get('route.products').send('ref');
   },
+  loadMoreItems: function(){
+      //this.incrementProperty('showItems');    
+      //console.log('items increment'); 
+      this.send('loadItems');
+  },
 });
 
+/*
+var showdown = new Showdown.converter();
 
+Ember.Handlebars.helper('format-markdown', function(input){
+  return new Handlebars.SafeString(showdown.makeHtml(input));
+});
+*/
 
 /*
 

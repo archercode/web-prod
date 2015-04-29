@@ -30,11 +30,6 @@ App.ApplicationRoute = Ember.Route.extend({
   model: function () {
     return this.store.find('cart');
   },
-    show: function(){
-    
-    
-    
-    },
   actions: {
     showModal: function(name, model) {
       console.log('name:');

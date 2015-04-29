@@ -1,8 +1,9 @@
 $.fn.goTo = function() {
     if($(this).offset() != undefined){
         $('html, body').animate({
-            scrollTop: $(this).offset().top + 'px'
-        }, 'fast');
+          //console.log(this)
+            scrollTop: $(scrollToThis).offset().top// + 'px'
+        }, 1000);
     }
     return this; // for chaining...
 };
@@ -66,6 +67,13 @@ $(document).ready(function(){
             $("#main_header").removeClass('shown');
             //$(".header_logo").removeClass('hidden');
         }
+
+        if($('footer').isOnScreen()){
+          //console.log("footer on screen");
+          App.ProductsRoute();
+        }
+
+
     });
     
 }); // close out script
