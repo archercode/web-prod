@@ -34,18 +34,15 @@ App.ProductsIndexView = Ember.View.extend({
   didScroll: function() {
     if(this.isScrolledToBottom()) {
       this.get('controller').send('loadMoreItems');
+      
     }
   },
 
   isScrolledToBottom: function(){
-  var distanceToViewportTop = (
-    $(document).height() - $(window).height());
-  var viewPortTop = $(document).scrollTop();
- 
-    if (viewPortTop === 0) {
-      return false;
-    }
-  return (viewPortTop - distanceToViewportTop === 0);
+  var distanceToTop = $(document).height() - $(window).height(),
+        top         = $(document).scrollTop();
+
+    return top === distanceToTop;
   },
 
   willDestroyElement: function() {
@@ -59,13 +56,10 @@ App.ProductsIndexView = Ember.View.extend({
 
 
 App.ProductsIndexRoute = Ember.Route.extend({
-  
   tempStorage: function(){
     return this.modelFor('products');
   },
-
-  showItems: 5,
-
+  showItems: 3,
   mod: [],
   prodController: null,
   queryField: null, 
@@ -83,11 +77,15 @@ App.ProductsIndexRoute = Ember.Route.extend({
       //return this.modelFor('products').splice(0,6);
       //return this.tempStorage();
       
-      for(var i = 0; i < 5; ++i){
+      
+      for(var i = 0; i < 3; ++i){
         this.mod[i] = this.tempStorage()[i];
       }
-      this.incrementProperty('this.showItems', 5);
+      this.incrementProperty('this.showItems', 3);
       return this.mod;
+      
+      //this.incrementProperty('this.showItems', 3);
+      //return this.modelFor('products').slice(0,3);
 
     }
     var regex = new RegExp(this.get('queryField'), 'i');
@@ -106,19 +104,26 @@ App.ProductsIndexRoute = Ember.Route.extend({
     ref:function(){
       this.refresh();
     },
+    demo:function(){
+      console.log('demo');
+    },
     loadItems: function(){
       //this.incrementProperty('showItems');
+      
       var items = this.modelFor('products_index');
-      var prod = this.modelFor('products');
-      var last = prod.length;
+      var prod  = this.modelFor('products');
+      var last  = prod.length;
       //this.incrementProperty('showItems');
       //this.incrementProperty('showItems');
       //if (this.showItems < prod.length){
-        for(var i = this.showItems - 5 ; i < this.showItems; i++){
-          if (last > i)
+        for(var i = this.showItems - 3 ; i < this.showItems; i++){
+          if (last > i){
             items.addObject(prod[i]);
+          }
         }
-        this.incrementProperty('showItems',5);
+        this.incrementProperty('showItems', 3);
+      
+
       //}
       //this.modelFor('products_index').splice(0, this.showItems);
       //this.refresh();
@@ -128,7 +133,6 @@ App.ProductsIndexRoute = Ember.Route.extend({
 
 // App.ProductsSeasonalRoute = Ember.Route.extend({
 App.ProductsBoardsRoute = Ember.Route.extend({
-  //spliceCount: 3,
   model: function () {
     return this.modelFor('products').filterProperty('type', 'boards');//.splice(0,this.spliceCount);
   }
