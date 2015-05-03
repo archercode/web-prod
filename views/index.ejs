@@ -76,21 +76,18 @@
   </div>
   
  
-<!-- Section 2
+<!-- Section 2-->
 <section id="home_header" >
   <div class="bg_overlay">
   </div>
   <div class="container main_content_header">
-            <b>
-    <div class="element_center text_rockin " >Rockin Circuits!
-      </b>
-    </div>
+      
   <div class="element_center text_ideas">
       <span class="typed"></span>       
     </div>
         {{product-header-filters product=this tagName='div' classNames='product_item_grid element_center'}}
   </div>
-</section>  -->
+</section>  
 
 
   <div id="content" class="container">
@@ -306,11 +303,17 @@
     <div class="element_header_bar element_header_item"></div>
   </div>
         <div class='list-unstyled'>
-      {{#each model}}
-        <div class="col-md-4" {{action 'showModal' 'product-detail-modal' this}}>
-        {{product-detail product=this tagName='div' classNames='product_item_grid'}}
-        </div>
+      <div class="row">
+      {{#each model}} 
+        
+    <div class="prod" {{action 'showModal' 'product-detail-modal' this}}>
+    {{product-detail product=this tagName='div' classNames='product_item_grid'}}
+    </div>
+    
+     
+      
       {{/each}}
+      </div>
     </div>
 </script>
 
@@ -323,7 +326,7 @@
   </div>
 <div class='list-unstyled'>
   {{#each}}
-    <div class="col-md-4" {{action 'showModal' 'product-detail-modal' this}}>
+    <div class="prod" {{action 'showModal' 'product-detail-modal' this}}>
     {{product-detail product=this tagName='div' classNames='product_item_grid'}}
     </div>
   {{/each}}
@@ -339,7 +342,7 @@
   </div>
 <div class='list-unstyled'>
   {{#each}}
-    <div class="col-md-4" {{action 'showModal' 'product-detail-modal' this}}>
+    <div class="prod" {{action 'showModal' 'product-detail-modal' this}}>
     {{product-detail product=this tagName='div' classNames='product_item_grid'}}
     </div>
   {{/each}}
@@ -355,7 +358,7 @@
   </div>
 <div class='list-unstyled'>
   {{#each}}
-    <div class="col-md-4" {{action 'showModal' 'product-detail-modal' this}}>
+    <div class="prod" {{action 'showModal' 'product-detail-modal' this}}>
     {{product-detail product=this tagName='div' classNames='product_item_grid'}}
     </div>
   {{/each}}
@@ -414,8 +417,7 @@
         <button class='btn btn-success' {{action 'buy' product}}> ₱{{product.price}}</button>
         
     </div>
-
-<!--  <p class="product-description">{{product.description}}</p> -->
+ 
   
 </div>
 </script>

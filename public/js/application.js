@@ -2,7 +2,7 @@ window.App = Ember.Application.createWithMixins({
   LOG_TRANSITIONS: true,
     ready: function() {
         
-        /*function setTyped(){
+        function setTyped(){
         
   $(".typed").typed({
     strings: ["<i>Ideas.</i> ^1500<span class='text_blue'>Build it.</span> ^1500<b>Rock on!</b>"],
@@ -21,7 +21,7 @@ window.App = Ember.Application.createWithMixins({
         setTyped();
             
    }, 1000);
-   */     
+        
   }
 });
 
@@ -110,11 +110,12 @@ if (window.history && window.history.pushState) {
     location: 'hash',
     rootURL: '/demo/index.html',
       doSomethingOnUrlChange: function() {
-          
+          /*
           if($(document).ready())
         if(this.get('url') == "/boards" || this.get('url') == "/sensors" || this.get('url') == "/robotics" ){
             $('#content').goTo();
         }
+        */
       }.on('didTransition')  
   });
 }

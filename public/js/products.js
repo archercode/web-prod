@@ -152,6 +152,7 @@ App.ProductsRoboticsRoute = Ember.Route.extend({
   }
 });
 
+
 App.ProductsController = Ember.ArrayController.extend({
   needs: "products_index",
   previousTransition: 'now',
@@ -160,7 +161,7 @@ App.ProductsController = Ember.ArrayController.extend({
    // console.log(this);
     return this.get('length');
   }.property('length'),
-
+    
     /*
   onSale: function() {
     return this.filterBy('isOnSale').get('length');

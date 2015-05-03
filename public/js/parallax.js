@@ -13,6 +13,7 @@ $.fn.goTo = function() {
 if on screen func; please move me :( 
 https://github.com/moagrius/isOnScreen
 */
+/*
 $.fn.isOnScreen = function(){
     var viewport = {};
     viewport.top = $(window).scrollTop() + 60;
@@ -22,6 +23,7 @@ $.fn.isOnScreen = function(){
     bounds.bottom = bounds.top + this.outerHeight();
     return ((bounds.top <= viewport.bottom) && (bounds.bottom >= viewport.top));
 };
+*/
 
 
 /**
@@ -53,7 +55,7 @@ $(document).ready(function(){
       }); // end window scroll
    });  // end section function*/
     
-    $window.scroll(function(){
+    /*$window.scroll(function(){
      
         if($('footer').isOnScreen()){
           //console.log("footer on screen");
@@ -61,7 +63,7 @@ $(document).ready(function(){
         }
 
 
-    });
+    });*/
     
 }); // close out script
 

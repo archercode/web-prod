@@ -55,16 +55,7 @@ a.list-group-item.active:focus {
     border-color: transparent;
 */
 }
-
-#intro { 
-    background: url(../images/bg/intro.png) 50% 0 fixed; 
-    height: auto;  
-    margin: 0 auto; 
-    width: 100%; 
-    position: relative; 
-    box-shadow: 0 0 50px rgba(0,0,0,0.8);
-    padding: 100px 0;
-}
+ 
 #home_header { 
     background: url(../images/bg/arduino.jpg) 50% 0 fixed; 
     height: auto;  
@@ -72,18 +63,8 @@ a.list-group-item.active:focus {
     width: 100%; 
     position: relative; 
     //box-shadow: 0 0 50px rgba(0,0,0,0.8);
-    padding: 50px 0;
-}
-#about { 
-    background: url(../images/bg/about.png) 50% 0 fixed; 
-    height: auto;
-    margin: 0 auto; 
-    width: 100%; 
-    position: relative; 
-    box-shadow: 0 0 50px rgba(0,0,0,0.8);
-    padding: 100px 0;
-    color: #fff;
-}
+    padding: 10px 0;
+} 
 
 
 /*
@@ -230,7 +211,7 @@ list-style: none;
 
 .header_bg{
     background: #43c0ef ;
-    opacity: 0.7;
+    opacity: 0.97;
       height: 50px;
   width: 100%;
   position: absolute;
@@ -327,5 +308,9 @@ list-style: none;
 
 .header_items .filters li.active a{
     color: #FFBB0D;
-    
+}
+
+.prod {
+    display: inline-block;
+    width: 33%;
 }
