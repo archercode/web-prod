@@ -6,13 +6,12 @@
   
   <link href="css/application.css" media="screen" rel="stylesheet" />
   <link href="css/circuit.css" media="screen" rel="stylesheet" />
-  <script src="js/libs/jquery-1.10.2.js"></script>
-  <script src="js/libs/bootstrap.js"></script>
+  <script src="js/libs/jquery-1.10.2.js"></script> 
   <script src="js/libs/handlebars-1.1.2.js"></script>
   <!-- // <script src="js/libs/ember-1.7.0.js"></script> -->
   <script src="js/libs/ember-1.7.min.js"></script>
   <script src="js/libs/typed.js"></script>
-  <script src="js/libs/bootstrap.js"></script>
+  <script src="js/libs/bootstrap.min.js"></script>
   <!-- // <script src="ember-data.js"></script> -->
   <script src="js/libs/ember-data.1.0.0-beta.4.min.js"></script>
   <script src="js/libs/localstorage_adapter.js"></script>
@@ -31,8 +30,8 @@
   <script src="js/data.js"></script>
   <script src="js/models/recipe.js"></script>
   <!-- // <script src="js/ajax_helpers.js"></script>   -->  
- <!-- <script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
- <link href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>-->
+ <!--<script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>-->
+ <!--<link href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>-->
 
   <link href="css/bootstrap.css" media="screen" rel="stylesheet" />
     
@@ -45,23 +44,41 @@
   <div id="main_header" class="navbar navbar-default navbar-fixed-top">
     <div class="header_bg">
     </div>
-    <div class="container home_links" >
-      {{#link-to "products" class="navbar-brand header_logo" }}Rockin Circuits!{{/link-to}}
-      <div class="" id="prod_filters">
-          {{product-header-filters-top product=this tagName='div' classNames=''}}
-      </div>
-      <div>
-        <form {{action "search" on="submit"}} class="input_line_style search_bar_right">
-          {{input value=query classNames="input_line_style"}}
-          <input type="submit" value="Search"/>
-        </form>
-      </div>
+    <div class="header_items" >
+    
+    <ul class="nav-justified" >
+        <li class="compact">
+            {{#link-to "products" class="" }}
+                <img src="images/ic_logo.png"  class="image_logo" alt="logo" height="32" width="122">{{/link-to}}
+            
+        </li>
+        <li class="compact">
+            <div class="" id="">
+            {{product-header-filters-top product=this tagName='div' classNames='filters'}}
+            </div>
+        </li>
+        <li class="compact">
+            <div>
+            <div>
+                <form {{action "search" on="submit"}} class=" ">
+                  {{input value=query classNames="search_bar"}}
+                </form>
+            </div>
+        </li>
+        <li class="compact">
+          <div class="">
+            <div {{action 'showModal' 'checkout-modal' model}}><img src="images/ic_cart.png"  class="image_logo" alt="logo" height="40" width="40">
+            <div class="cart_itemCount">2</div></div>
+          </div>
+        </li> 
+            
+    </ul>
     </div> 
   </div>
   
  
-<!-- Section 2 -->
-<section id="home_header" data-speed="4" data-type="background">
+<!-- Section 2
+<section id="home_header" >
   <div class="bg_overlay">
   </div>
   <div class="container main_content_header">
@@ -74,7 +91,7 @@
     </div>
         {{product-header-filters product=this tagName='div' classNames='product_item_grid element_center'}}
   </div>
-</section> 
+</section>  -->
 
 
   <div id="content" class="container">
@@ -93,7 +110,32 @@
   </footer>
 </script>
 
+<script type="text/x-handlebars" data-template-name='components/product-header-filters-top'>
+    
+    <div class=''>
+      <div>
+          <ul class="nav-justified ">
+            <li class=" ">
+          {{#link-to 'products.boards' classNames=""}}
+            BOARDS
+          {{/link-to}}
+            </li>
+            <li class=" ">
+          {{#link-to 'products.sensors' classNames=""}}
+            SENSORS
+          {{/link-to}}
+            </li>
+            <li class=" ">
+          {{#link-to 'products.robotics' classNames=""}}
+            ROBOTICS
+          {{/link-to}}
+            </li>
 
+        </ul>
+      </div>
+    </div>   
+
+</script>  
 
 <script type="text/x-handlebars" data-template-name="checkout-modal">
 {{#modal-dialog title='checkout' ok='logout' close='removeModal' yesButton='Order' hasCloseBtn=True}}
@@ -206,40 +248,7 @@
 </div>
 </script>  
 
-<script type="text/x-handlebars" data-template-name='components/product-header-filters-top'>
-    
-    <div class='prod_filter_body'>
-      <div>
-          <ul class="nav-justified prod_filter_icons">
-            <li class="li_no_style prod_filter_icon">
-          {{#link-to 'products.boards' classNames="icon_circle"}}
-                <img src="images/icons/Remote-Control-128.png"  class="image_logo" alt="logo" height="40" width="40">
-          {{/link-to}}
-            </li>
-            <li class="li_no_style prod_filter_icon">
-          {{#link-to 'products.sensors' classNames="icon_circle"}}
-                
-                <img src="images/icons/Modem-Wireless-128.png"  class="image_logo" alt="logo" height="40" width="40">
-          {{/link-to}}
-            </li>
-            <li class="li_no_style prod_filter_icon">
-          {{#link-to 'products.robotics' classNames="icon_circle"}}
-                
-                <img src="images/icons/Webcam-128.png"  class="image_logo" alt="logo" height="40" width="40">
-          {{/link-to}}
-            </li>
 
-            <li {{action 'showModal' 'checkout-modal'  modal}} class="li_no_style prod_filter_icon " >
-                <div class="icon_circle">
-                <img src="images/ic_cart.png"  class="image_logo" alt="logo" height="40" width="40">
-        <div class="cart_itemCount">2</div>
-                </div>
-            </li>
-        </ul>
-      </div>
-    </div>   
-
-</script>  
     
 <script type="text/x-handlebars" data-template-name='components/product-header-filters'> 
       <div>

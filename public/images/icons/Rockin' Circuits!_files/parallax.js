@@ -33,7 +33,7 @@ $(document).ready(function(){
    // cache the window object
    $window = $(window);
  
-   /*$('section[data-type="background"]').each(function(){
+   $('section[data-type="background"]').each(function(){
      // declare the variable to affect the defined data-type
      var $scroll = $(this);
                      
@@ -51,7 +51,7 @@ $(document).ready(function(){
            
           
       }); // end window scroll
-   });  // end section function*/
+   });  // end section function
     
     $window.scroll(function(){
      

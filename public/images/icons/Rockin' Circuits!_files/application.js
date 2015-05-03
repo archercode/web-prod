@@ -2,7 +2,7 @@ window.App = Ember.Application.createWithMixins({
   LOG_TRANSITIONS: true,
     ready: function() {
         
-        /*function setTyped(){
+        function setTyped(){
         
   $(".typed").typed({
     strings: ["<i>Ideas.</i> ^1500<span class='text_blue'>Build it.</span> ^1500<b>Rock on!</b>"],
@@ -21,7 +21,7 @@ window.App = Ember.Application.createWithMixins({
         setTyped();
             
    }, 1000);
-   */     
+        
   }
 });
 
@@ -148,9 +148,7 @@ App.ModalDialogComponent = Ember.Component.extend({
     }
   },
     show: function() { 
-    
-    $('.modal').modal().on('hidden.bs.modal', function() {
-          console.log('closing modal');
+      $('.modal').modal().on('hidden.bs.modal', function() {
         this.sendAction('close');
       }.bind(this));
     }.on('didInsertElement')
