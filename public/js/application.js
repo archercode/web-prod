@@ -71,10 +71,15 @@ App.ApplicationRoute = Ember.Route.extend({
 
 App.ApplicationController = Ember.ObjectController.extend({
 
+  itemCounter: function() {
+   // console.log(this);
+    return this.get('length');
+  }.property('length'),
+  /*
   model: function () {
     return this.modelFor('cart');
   },
-
+  */
   actions: {
     deleteItem:function(key){
         var cart = this.store.all('cart');

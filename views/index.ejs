@@ -67,7 +67,10 @@
         <li class="compact">
           <div class="">
             <div {{action 'showModal' 'checkout-modal' model}}><img src="images/ic_cart.png"  class="image_logo" alt="logo" height="40" width="40">
-            <div class="cart_itemCount">2</div></div>
+             {{#if itemCounter}} 
+            <div class="cart_itemCount">{{itemCounter}}</div>
+              {{/if}}
+            </div>
           </div>
         </li> 
             
