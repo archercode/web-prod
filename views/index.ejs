@@ -40,6 +40,7 @@
 <body onload="onload">
 
 <script type="text/x-handlebars" data-template-name='application'>
+
   <div id="main_header" class="navbar navbar-default navbar-fixed-top">
     <div class="header_bg">
     </div>
@@ -48,7 +49,7 @@
     <ul class="nav-justified" >
         <li class="compact">
             {{#link-to "products" class="" }}
-                <img src="images/ic_logo.png"  class="image_logo" alt="logo" height="32" width="122">{{/link-to}}
+                <img src="images/ic_logo.png"  class="image_logo" alt="logo" height="32" width="122" {{action 'submit' target="view"}}>{{/link-to}}
             
         </li>
         <li class="compact">
@@ -58,7 +59,7 @@
         </li>
         <li class="compact">
             <div>
-            <div>
+            <div {{action 'submit' target="view"}}>
                 <form {{action "search" on="submit"}} class=" ">
                   {{input value=query classNames="search_bar"}}
                 </form>
@@ -114,22 +115,24 @@
     <div class=''>
       <div>
           <ul class="nav-justified ">
-            <li class=" ">
+            <li class=" "{{action 'submit' target="parentView"}}>
           {{#link-to 'products.boards' classNames=""}}
             BOARDS
           {{/link-to}}
             </li>
-            <li class=" ">
-          {{#link-to 'products.sensors' classNames=""}}
+            <li class=" " {{action 'submit' target="parentView"}}>
+          {{#link-to 'products.sensors' classNames="" }}
             SENSORS
           {{/link-to}}
             </li>
-            <li class=" ">
+            <li class=" "{{action 'submit' target="parentView"}}>
           {{#link-to 'products.robotics' classNames=""}}
             ROBOTICS
           {{/link-to}}
             </li>
         </ul>
+
+        
       </div>
     </div>   
 
@@ -416,6 +419,7 @@
     </div>
     <div class="col-md-4">
         <button class='btn btn-success' {{action 'buy' product}}> ₱{{product.price}}</button>
+        <button>+</button>
     </div>
 </div>
 </script>

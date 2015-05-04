@@ -90,6 +90,7 @@ App.ApplicationController = Ember.ObjectController.extend({
         todo.save();
     },
     search: function(params) {
+      console.log('thisaction');
     },
   },
   onChangeQuery : function () {
@@ -114,13 +115,14 @@ App.ApplicationController = Ember.ObjectController.extend({
 App.ApplicationView = Ember.View.extend({
   prevTop: null,
   isScrolling: false,
+  classNameBindings: ['pressed'],
   //isView,
   didInsertElement: function() {
     var view = this;
     // console.log('didInsertElement'); 
   },
 
-  click: function(event) {
+  submit: function(event) {
     var top = $("body").scrollTop();
       //if (!this.isScrolling){
         this.set('isScrolling', true)
@@ -132,7 +134,6 @@ App.ApplicationView = Ember.View.extend({
                // alert("Finished animating");
               // this.set('prevTop', top);
               top = $("body").scrollTop();
-              //console.log(top);
             }
           ); 
           this.set('prevTop',top);
@@ -142,6 +143,7 @@ App.ApplicationView = Ember.View.extend({
           return this.isView; 
         }
       //}
+      
   }
 });
 
@@ -385,6 +387,22 @@ App.ProductDetailModalController = Ember.ObjectController.extend({
         return items;
       }
     }
+});
+
+App.ProductHeaderFiltersTopComponent = Ember.Component.extend({
+  actions:{
+    scrollToThis:function(){
+      console.log('log'); 
+      
+    },
+  },
+  /*
+  click : function() {
+      console.log('log'); 
+      //  this.set("selection", this.$().val());
+  },
+  */
+
 });
 
 // Handlebars

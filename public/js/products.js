@@ -266,6 +266,11 @@ App.ProductDetailComponent = Ember.Component.extend({
   }.property(),
     
   actions: {
+    ableToScroll: function(){
+      console.log('ableToScroll');
+    },
+    
+    /*
     buy: function(product){
       this.get('storage').addToCart(this.store, product.title, product.price);
     },
@@ -277,6 +282,7 @@ App.ProductDetailComponent = Ember.Component.extend({
     closeModal: function() { 
       this.get('parentView').send('removeModal', action);
     },
+    
   }
     
 });
