@@ -62,14 +62,22 @@ App.ProductsIndexRoute = Ember.Route.extend({
   showItems: 3,
   mod: [],
   prodController: null,
+  appController:null,
   queryField: null, 
   beforeModel: function(transition){
     //console.log(transition);
     //console.log('beforeModel');
     prodController = this.controllerFor('products');
-    var query = prodController.get('query');
-    this.set('queryField',query);
+    //var query = prodController.get('query');
+    //this.set('queryField',query);
     prodController.set('previousTransition', 'today');
+
+    ///////////////
+    appController = this.controllerFor('application');
+    var q = appController.get('queryField');
+    //console.log(q);
+    this.set('queryField', q);
+
 
   },
   model: function(params) {
@@ -110,19 +118,20 @@ App.ProductsIndexRoute = Ember.Route.extend({
     loadItems: function(){
       //this.incrementProperty('showItems');
       
-      var items = this.modelFor('products_index');
-      var prod  = this.modelFor('products');
-      var last  = prod.length;
-      //this.incrementProperty('showItems');
-      //this.incrementProperty('showItems');
-      //if (this.showItems < prod.length){
-        for(var i = this.showItems - 3 ; i < this.showItems; i++){
-          if (last > i){
-            items.addObject(prod[i]);
+      if (!this.queryField){
+        var items = this.modelFor('products_index');
+        var prod  = this.modelFor('products');
+        var last  = prod.length;
+        //this.incrementProperty('showItems');
+        //this.incrementProperty('showItems');
+        //if (this.showItems < prod.length){
+          for(var i = this.showItems - 3 ; i < this.showItems; i++){
+            if (last > i){
+              items.addObject(prod[i]);
+            }
           }
-        }
-        this.incrementProperty('showItems', 3);
-      
+          this.incrementProperty('showItems', 3);
+      }
 
       //}
       //this.modelFor('products_index').splice(0, this.showItems);
@@ -175,38 +184,18 @@ App.ProductsController = Ember.ArrayController.extend({
     return this.filterBy('type','sensor').get('length');
   }.property('@each.type'),
   */
-  actions: {
-    search: function(params) {
-      //console.log(params);
-      //debugger;
-     // var query = this.get('queryField');
-      //.transitionToRoute('products.index', {queryField: query});
-      //this.get('controllers.index').send('stuff'); 
-      //this.set('query', this.get('queryField'));
-      //this.transitionToRoute("products.index");
-    }
-  },
-  onChangeQuery : function () {
-          /*var query = this.get("query");            
-            this.set('query', this.get('query'));*/
-            //this.send('queryParamsDidChange');
-            //this.modelRefresher();
-            //this.get('controllers.products_index').send('modelRefresher');
-        if (this.previousTransition === "today"){
-           //console.log(this.previousTransition);
-          this.get('controllers.products_index').send('modelRefresher');
-        }
-        else
-          this.transitionToRoute("products.index");
-  }.observes("query")
+  actions: {},
   
 });
 
 App.ProductsIndexController = Ember.ArrayController.extend({
-  needs: "products",
+  needs: 'application',
   sortProperties: ['title'],
   modelRefresher: function(){
-    this.send('ref');
+    //this.send('ref');
+    console.log('modelRefresher');
+    //this.get('model').refresh();
+    this.get('target.router').refresh();
     //this.get('route.products').send('ref');
   },
   loadMoreItems: function(){

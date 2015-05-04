@@ -70,7 +70,8 @@ App.ApplicationRoute = Ember.Route.extend({
 
 
 App.ApplicationController = Ember.ObjectController.extend({
-
+  needs: 'products_index',
+  queryField: null,
   itemCounter: function() {
    // console.log(this);
     return this.get('length');
@@ -87,11 +88,64 @@ App.ApplicationController = Ember.ObjectController.extend({
         var todo = this.get('model');
         todo.deleteRecord();
         todo.save();
-    }
+    },
+    search: function(params) {
+    },
   },
+  onChangeQuery : function () {
+          /*var query = this.get("query");            
+            this.set('query', this.get('query'));*/
+            //this.send('queryParamsDidChange');
+            //this.modelRefresher();
+            //this.get('controllers.products_index').send('modelRefresher');
+       // if (this.previousTransition === "today"){
+           //console.log(this.previousTransition);
+          this.transitionToRoute('products.index');
+          this.set('queryField', this.get('query'));
+          //console.log(this.queryField);
+          this.get('controllers.products_index').send('modelRefresher');
+       // }
+       // else
+       //   this.transitionToRoute('products.index');
+  }.observes('query')
 });
 
+///////////////////////////
+App.ApplicationView = Ember.View.extend({
+  prevTop: null,
+  isScrolling: false,
+  //isView,
+  didInsertElement: function() {
+    var view = this;
+    // console.log('didInsertElement'); 
+  },
 
+  click: function(event) {
+    var top = $("body").scrollTop();
+      //if (!this.isScrolling){
+        this.set('isScrolling', true)
+        if(this.prevTop !== top){
+            //console.log(this.isView);
+            $('html, body').animate({
+              scrollTop: $(scrollToThis).offset().top// + 'px'
+            }, 1000, 'swing', function() { 
+               // alert("Finished animating");
+              // this.set('prevTop', top);
+              top = $("body").scrollTop();
+              //console.log(top);
+            }
+          ); 
+          this.set('prevTop',top);
+         // console.log(this.prevTop);
+          this.set('isScrolling',false);
+         // console.log(this.isScrolling);
+          return this.isView; 
+        }
+      //}
+  }
+});
+
+///////////////////////////
 App.Router.map(function() {
   this.route('credits');
   this.route('about');
@@ -115,13 +169,15 @@ if (window.history && window.history.pushState) {
     location: 'hash',
     rootURL: '/demo/index.html',
       doSomethingOnUrlChange: function() {
-          /*
+        
+        /*  
           if($(document).ready())
         if(this.get('url') == "/boards" || this.get('url') == "/sensors" || this.get('url') == "/robotics" ){
-            $('#content').goTo();
+            $('#scrollToThis').goTo();
         }
         */
       }.on('didTransition')  
+
   });
 }
 
@@ -154,9 +210,8 @@ App.ModalDialogComponent = Ember.Component.extend({
     }
   },
     show: function() { 
-    
     $('.modal').modal().on('hidden.bs.modal', function() {
-          console.log('closing modal');
+        console.log('closing modal');
         this.sendAction('close');
       }.bind(this));
     }.on('didInsertElement')
@@ -170,7 +225,7 @@ App.ModalDialogComponent = Ember.Component.extend({
 App.LogoutModalController = Ember.ObjectController.extend({
   actions: {
     logout: function() {
-      alert('logouttModal');
+      alert('logout Modal');
     }
   }
 });
@@ -282,9 +337,11 @@ App.ProductDetailModalController = Ember.ObjectController.extend({
         return this.get('model').get('title')
     }.property(),
     actions: {
+    /*
     getTitle: function(){
-        return this.get("title");
+        return this.get('title');
     },
+    */
     buyProduct: function(args) {
 
         var bool = false;

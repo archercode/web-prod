@@ -129,7 +129,6 @@
             ROBOTICS
           {{/link-to}}
             </li>
-
         </ul>
       </div>
     </div>   
@@ -142,7 +141,7 @@
       <ul>
         {{#each item in model itemController="application" }}
           <li {{bind-attr class=""}}>
-          {{item.id}}: {{item.amount}} x {{item.quantity}}
+          {{item.name}}: {{item.amount}} x {{item.quantity}}
           <button class='btn btn-success' {{action 'deleteItem'}}>x</button> 
           </li>
         {{/each}}
@@ -412,16 +411,12 @@
     <img {{bind-attr src='product.image'}} class='img-thumbnail'/>
 </div>
 <div class='row product_item_description'>
-  
     <div class="col-md-8">
         <h4>{{product.title}}</h4>
     </div>
     <div class="col-md-4">
         <button class='btn btn-success' {{action 'buy' product}}> ₱{{product.price}}</button>
-        
     </div>
- 
-  
 </div>
 </script>
 
