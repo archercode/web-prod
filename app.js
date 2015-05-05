@@ -21,7 +21,24 @@ var data =
       "description": "URM37 V4.0 Ultrasonic Sensor comes with a temperature correction which is a very unique feature in its class. URM37 V4.0 (last version) has already been a very good realization of ultrasonic switch and serial (TTL and RS232 level optional), pulse output function, the module can also control a servo rotation to realize a spatial ultrasound scanner. On this basis we have to upgrade the function",
       "type"  : 'sensors',
       "image" : 'images/products/SEN0001.jpg'
-    }, 
+    },
+    
+    {
+      "title": 'Sharp GP2Y0A21 Distance Sensor (10-80cm)',
+      "price": 620,
+      "model": 'SEN0014',
+      "description": "The Sharp distance sensors are a popular choice for many projects that require accurate distance measurements. This IR sensor is more economical than sonar rangefinders, yet it provides much better performance than other IR alternatives. Interfacing to most microcontrollers is straightforward: the single analog output can be connected to an analog-to-digital converter for taking distance measurements, or the output can be connected to a comparator for threshold detection. The detection range of this version is approximately 10 cm to 80 cm (4' to 32'); a plot of distance versus output voltage is shown below.",
+      "type"  : 'sensors',
+      "image" : 'images/products/SEN0014.jpg'
+    },
+        {
+      "title": 'UV Sensor',
+      "price": 460,
+      'model': 'TOY0044',
+      "description": "This UV Sensor (Gadgeteer compatible) used GUVA-S12SD chip is suitable for detecting the UV raditation in sunlight. It can be used in UV Index Monitoring, DIY project, UV-A Lamp Monitoring, Plants growing Environmental monitoring...etc. It can detect the UV wavelength of 200-370nm, fast response, linear analog voltage signal output. Small size, easy for installing. With the diagram of the world health organization UV index grading standards, you can know the UV index from the sensor directly.",
+      "type": 'sensors',
+      "image": "images/products/TOY0044.jpg",
+    },
     {
       "title": 'DS18B20 Temperature Sensor',
       "price": 300,
@@ -65,15 +82,25 @@ var data =
     {
       "title": '360 Degree Motor (20kg)',
       "price": 800,
-      "model":'SER0035',
-      "description": 'The DF15RSMG  equips with two pairs of the servo shells. One is a stardard shell with four M4 mounting holes. And the other one includes a shell with double bearing which is specially designed for the application of the robot arm or the joints.The shells of this kit are thickened to make it stable enough for motion system.',
+      'model':'SER0035',
+      "description": "The DF15RSMG  equips with two pairs of the servo shells. One is a stardard shell with four M4 mounting holes. And the other one includes a shell with double bearing which is specially designed for the application of the robot arm or the joints.The shells of this kit are thickened to make it stable enough for motion system.",
       "type": 'robotics',
-      "image": 'images/products/SER0035.jpg',
-    }, 
+      "image": "images/products/SER0035.jpg",
+    },
+    /*
+    {
+      "title": 'Tilt/Pan Kit (5kg)',
+      "price": 1000,
+      'model': 'FIT0045',
+      "description": 'The bow drill is an ancient tool. While it was usually used to make fire, it was also used for primitive woodworking and dentistry.',
+      "type": 'robotics',
+      "image": 'images/products/FIT0045.jpg',
+    },
+    */
     {
       "title": 'Capacitive Touch Sensor',
       "price": 300,
-      "model": 'DFR0030',
+      'model': 'DFR0030',
       "description": 'This little sensor can "feel" people and metal touch and feedback a high/low voltage level. Even isolated by some cloth and paper, it still can feel the touch. And the sensetivity well decrease as isolation get thick.',
       "type": 'sensors',
       "image": 'images/products/DFR0030.jpg',
@@ -81,7 +108,7 @@ var data =
     {
       "title": 'Triple Axis Accelerometer BMA220 (Tiny)',
       "price": 300,
-      "model":'SEN0168',
+      'model':'SEN0168',
       "description": 'This Triple Axis Accelerometer with Bosch BMA220 is an ultra small triaxial, low-g acceleration sensor breakboard with SPI and I2C interface, aiming for lowpower consumer market applications. It allows measurement of accelerations in 3 perpendicular axes and thus senses tilt, motion, shock and vibration in cell phones, handhelds, computer peripherals, man-machine interfaces, virtual reality features and game controllers.',
       "type": 'sensors',
       "image": 'images/products/SEN0168.jpg',
@@ -127,7 +154,17 @@ var data =
       "description": 'Analog Sound Sensor is typically used in detecting the loudness in ambient, the Arduino can collect its output signal and actuate accordingly. You may use it to make some funny interactive works such as a "clap and buzz" to find your lost keys or remote control if you add a buzzer.',
       "type": 'sensors',
       "image": 'images/products/DFR0034.jpg',
-    }, 
+    },
+    /*
+    {
+      "title":'Arduino Mega2560 Rev3',
+      "model": 'DFR0191',
+      "price": 2400,
+      "description": "URM37 V4.0 Ultrasonic Sensor comes with a temperature correction which is a very unique feature in its class. URM37 V4.0 (last version) has already been a very good realization of ultrasonic switch and serial (TTL and RS232 level optional), pulse output function, the module can also control a servo rotation to realize a spatial ultrasound scanner. On this basis we have to upgrade the function",
+      "type"  : 'boards',
+      "image" : 'images/products/DFR0191.jpg'
+    },
+    */
     {
       "title":'DFRduino UNO R3',
       "model": 'DFR0216',
@@ -169,7 +206,17 @@ var data =
       "description": "Wido is an Arduino compatible WIFI IoT Node development board, which integrates with WG1300 WIFI solution. The microcontroller of Wido is ATMEL ATmega32U4.",
       "type"  : 'boards',
       "image" : 'images/products/DFR0321.jpg'
-    }, 
+    },
+    /*
+    { //
+      "title":'DF05BB Standard Servo',
+      "model": 'SER0020',
+      "price": 2400,
+      "description": "URM37 V4.0 Ultrasonic Sensor comes with a temperature correction which is a very unique feature in its class. URM37 V4.0 (last version) has already been a very good realization of ultrasonic switch and serial (TTL and RS232 level optional), pulse output function, the module can also control a servo rotation to realize a spatial ultrasound scanner. On this basis we have to upgrade the function",
+      "type"  : 'sensors',
+      "image" : 'images/products/SER0020'
+    },
+    */
     {
       "title":'Analog LPG Gas Sensor(MQ6)',
       "model": 'SEN0131',
@@ -201,7 +248,17 @@ var data =
       "description": "This shield with a Quad-band GSM/GPRS engine works on frequencies EGSM 900MHz/DCS 1800MHz and GSM850 MHz/PCS 1900MHz. It also supports GPS technology for satellite navigation. It's possible for your robot and control system to send messages and use the GSM network.",
       "type"  : 'boards',
       "image" : 'images/products/TEL0051.jpg'
-    }, 
+    },
+    /*
+    {
+      "title":'LED Current Meter 10A',
+      "model": 'DFR0244­',
+      "price": 400,
+      "description": "URM37 V4.0 Ultrasonic Sensor comes with a temperature correction which is a very unique feature in its class. URM37 V4.0 (last version) has already been a very good realization of ultrasonic switch and serial (TTL and RS232 level optional), pulse output function, the module can also control a servo rotation to realize a spatial ultrasound scanner. On this basis we have to upgrade the function",
+      "type"  : 'robotics',
+      "image" : 'images/products/DFR0244­.jpg'
+    },
+    */
     {
       "title":'MicroSD card module',
       "model": 'DFR0229',
@@ -209,7 +266,17 @@ var data =
       "description": "This is a Micro SD(TF) module from DFRobot. It is compatible with TF SD card (commonly used in Mobile Phone) which is the most tiny card in the market. SD module has various applications such as data logger, audio, video, graphics. This module will greatly expand the capbility an Arduino can do with their poor limited memory. ",
       "type"  : 'boards',
       "image" : 'images/products/DFR0229.jpg'
-    }, 
+    },
+    /*
+    { 
+      "title":'Sharp GP2Y0A21 Distance Sensor',
+      "model": 'SEN0014',
+      "price": 2400,
+      "description": "URM37 V4.0 Ultrasonic Sensor comes with a temperature correction which is a very unique feature in its class. URM37 V4.0 (last version) has already been a very good realization of ultrasonic switch and serial (TTL and RS232 level optional), pulse output function, the module can also control a servo rotation to realize a spatial ultrasound scanner. On this basis we have to upgrade the function",
+      "type"  : 'sensors',
+      "image" : 'images/products/SEN0014'
+    },
+    */
     {
       "title":'DFPlayer ­ A Mini MP3 Player',
       "price": 420,
@@ -237,7 +304,17 @@ var data =
       "type"  : 'robotics',
       "image" : 'images/products/FIT0008.jpg'
     },
-     
+    
+    /*
+    {
+      "title":'Arduino Yún',
+      "model": 'DFR0297',
+      "price": 4000,
+      "description": "URM37 V4.0 Ultrasonic Sensor comes with a temperature correction which is a very unique feature in its class. URM37 V4.0 (last version) has already been a very good realization of ultrasonic switch and serial (TTL and RS232 level optional), pulse output function, the module can also control a servo rotation to realize a spatial ultrasound scanner. On this basis we have to upgrade the function",
+      "type"  : 'boards',
+      "image" : 'images/products/DFR0297.jpg'
+    },
+    */
     {
       "title":'Relay Module V3.1',
       "model": 'DFR0017',
