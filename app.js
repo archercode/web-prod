@@ -35,7 +35,7 @@ var data =
       "title": 'UV Sensor',
       "price": 460,
       'model': 'TOY0044',
-      "description": "This UV Sensor (Gadgeteer compatible) used GUVA-S12SD chip is suitable for detecting the UV raditation in sunlight. It can be used in UV Index Monitoring, DIY project, UV-A Lamp Monitoring, Plants growing Environmental monitoring...etc. It can detect the UV wavelength of 200-370nm, fast response, linear analog voltage signal output. Small size, easy for installing. With the diagram of the world health organization UV index grading standards, you can know the UV index from the sensor directly.",
+      "description": "This UV Sensor used GUVA-S12SD chip is suitable for detecting the UV raditation in sunlight. It can be used in UV Index Monitoring, DIY project, UV-A Lamp Monitoring, Plants growing Environmental monitoring...etc. It can detect the UV wavelength of 200-370nm, fast response, linear analog voltage signal output. Small size, easy for installing. With the diagram of the world health organization UV index grading standards, you can know the UV index from the sensor directly.",
       "type": 'sensors',
       "image": "images/products/TOY0044.jpg",
     },
