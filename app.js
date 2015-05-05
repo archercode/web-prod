@@ -31,7 +31,7 @@ var data =
       "type"  : 'sensors',
       "image" : 'images/products/SEN0014.jpg'
     },
-        {
+    {
       "title": 'UV Sensor',
       "price": 460,
       'model': 'TOY0044',

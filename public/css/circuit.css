@@ -305,6 +305,13 @@ list-style: none;
     text-decoration: none;
 }
 
+.header_items .filters li a.selected{
+    color: #6E6E70;  
+    opacity: 0.9;
+    text-shadow: rgba(0,0,0,0.3) 0px 1px 1px;
+    text-decoration: none;
+}
+
 .cart{
     opacity: 0.8;
 }
