@@ -139,21 +139,90 @@
 </script>  
 
 <script type="text/x-handlebars" data-template-name="checkout-modal">
-{{#modal-dialog title='checkout' ok='logout' close='removeModal' yesButton='Order' hasCloseBtn=True}}
-    <div class="row">
-      <ul>
-        {{#each item in model itemController="application" }}
-          <li {{bind-attr class=""}}>
-          {{item.name}}: {{item.amount}} x {{item.quantity}}
-          <button class='btn btn-success' {{action 'deleteItem'}}>x</button> 
-          </li>
-        {{/each}}
-      </ul>
-        Total items: {{itemOrderCount}}
-        Total amount: {{subTotal}}
-        <h3>
-          Payment Options - {{selectedVal}}
-        </h3>
+{{#modal-dialog title='Checkout' ok='logout' close='removeModal' yesButton='Order' hasCloseBtn=True hasClass='checkout_modal'}}
+    
+<div class="row">
+    <div class="col-md-8">
+    <div class="row ">
+        <div class="col-md-7">
+            <h3 class="subheader">Personal Details</h3>
+            
+            <div class="row">
+                <div class="col-md-11 personal_details">
+                    <label>Name</label>
+                    {{input type="text" value=firstName}}
+                </div>
+                <div class="col-md-1">
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-12 personal_details">
+                    <label>Address</label>
+                    {{input type="text" value=address}} 
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4 personal_details">
+                    <label>City</label>
+                    {{input type="text" value=city}}
+                </div>
+                <div class="col-md-6 personal_details">
+                    <label>Region</label>
+                    {{input type="text" value=usState}}
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4 personal_details">
+                    <label>Zip Code</label>
+                    {{input type="text" value=zipCode}} 
+                </div>
+                <div class="col-md-8 personal_details"> 
+                    <label>CellPhone</label>
+                    {{input type="text" value=phone}}
+                </div>
+            </div> 
+            
+            <div class="row">
+            
+                <div class="col-md-12 personal_details">
+            <label>Email address</label>
+            {{input type="email" value=email}}
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-5">
+            <h3 class="subheader">Shipping Information</h3>
+            {{v-card fn=firstName street-address=address locality=city usState=usState zip=zipCode email=email phone=phone}}
+        </div>
+        
+        </div>
+    </div>
+    
+     <div class="col-md-4">
+        <div class="row">
+    
+            <h3 class="subheader">Order Summary</h3>
+          <ul>
+            {{#each item in model itemController="application" }}
+              <li {{bind-attr class=""}}>
+              {{item.name}}: {{item.amount}} x {{item.quantity}}
+              <button class='btn btn-success' {{action 'deleteItem'}}>x</button> 
+              </li>
+            {{/each}}
+          </ul>
+            Total items: {{itemOrderCount}}
+            Total amount: {{subTotal}}
+        
+        </div>
+        <div class="row">
+    
+            <h3>
+              Payment Options - {{selectedVal}}
+            </h3>
           {{ext-radio content=radioContent value=selectedVal}}
 
           {{#if optionBank }}
@@ -171,30 +240,10 @@
               </h3>
             </div>
           {{/if}}
+          
+        </div>
     </div>
-
-{{v-card fn=firstName street-address=address locality=city usState=usState zip=zipCode email=email phone=phone}}
-    <h3 class="subheader">Edit this card:</h3>
-    <label>First Name</label>
-    {{input type="text" value=firstName}}
-
-    <label>Address</label>
-    {{input type="text" value=address}}
-
-    <label>City</label>
-    {{input type="text" value=city}}
-
-    <label>Region</label>
-    {{input type="text" value=usState}}
-
-    <label>Zip Code</label>
-    {{input type="text" value=zipCode}}
-
-    <label>Email address</label>
-    {{input type="email" value=email}}
-
-    <label>CellPhone</label>
-    {{input type="text" value=phone}}
+</div>
 
 {{/modal-dialog}}
 </script>
@@ -388,7 +437,8 @@
 </script>
 
 <script type="text/x-handlebars" id="components/modal-dialog">
-  <div class="modal fade">
+  <div class="modal fade ">
+    <div  {{bind-attr class='hasClass'}}>
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -405,6 +455,7 @@
           <button type="button" class="btn btn-primary" {{action "ok" }}>{{yesButton}}</button>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </script>  

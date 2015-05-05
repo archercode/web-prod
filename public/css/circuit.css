@@ -328,3 +328,19 @@ list-style: none;
     display: inline-block;
     width: 33%;
 }
+
+
+.checkout_modal > .modal-dialog{
+    width: 70% !important;
+}
+
+.personal_details > label{
+  
+  position: absolute;
+  color: #6E6E70;
+  font-size: smaller;
+}
+
+.personal_details > input{
+  margin-top: 25px;
+}
