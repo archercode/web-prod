@@ -1,3 +1,7 @@
+@font-face {
+  font-family: rc_font;
+  src: url('../fonts/g_xlight.ttf') format('opentype');
+}
 
 .typed-cursor{
     opacity: 1;
@@ -273,7 +277,7 @@ list-style: none;
 
 
 .header_items {
-    padding-top: 3px;
+    padding-top: 6px;
       width: 960px;
   margin: 0 auto;
   position: relative;
@@ -301,13 +305,23 @@ list-style: none;
     text-decoration: none;
 }
 
+.cart{
+    opacity: 0.8;
+}
+
+.cart:hover{
+    opacity: 1;
+}
+
+
 .header_items .filters li a:hover{
     /*color: #faf2ee;*/
     opacity: 1;
 }
 
 .header_items .filters li.active a{
-    color: #FFBB0D;
+    /*/color: #FFBB0D;*/
+    opacity: 1;
 }
 
 .prod {

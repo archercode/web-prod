@@ -243,13 +243,14 @@ table {
     border: 1px solid #ddd !important;
   }
 }
-@font-face {
-  font-family: "Josefin Sans", sans-serif;/*, Futura,"Trebuchet MS",Arial,sans-serif;*/
-  src: url('../fonts/clarendonltstd-webfont.eot');
-  src: url('../fonts/clarendonltstd-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/clarendonltstd-webfont.woff') format('woff'), url('../fonts/clarendonltstd-webfont.ttf') format('truetype'), url('../fonts/clarendonltstd-webfont.svg#clarendon_lt_stdregular') format('svg');
-  font-weight: normal;
-  font-style: normal;
+
+@font-face{
+    font-family: "RC Font";
+    src: url('../fonts/g_light.otf') format('opentype');
+    font-weight: normal; 
+    font-style: normal;
 }
+ 
 *,
 *:before,
 *:after {
@@ -262,7 +263,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "Josefin Sans", sans-serif;/*, Futura,"Trebuchet MS",Arial,sans-serif;*/
+  font-family: "RC Font", Verdana, Arial, serif;
   font-size: 14px;
   line-height: 1.428571429;
   color: #222222;
@@ -404,7 +405,7 @@ h6,
 .h5,
 .h6 {
   
-  font-family: "Josefin Sans", sans-serif;/*, Futura,"Trebuchet MS",Arial,sans-serif;*/
+  font-family: "RC Font", Verdana, Arial, serif;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
