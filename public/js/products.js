@@ -163,7 +163,7 @@ App.ProductsRoboticsRoute = Ember.Route.extend({
 
 
 App.ProductsController = Ember.ArrayController.extend({
-  needs: "products_index",
+  needs: ['products_index'],
   previousTransition: 'now',
   sortProperties: ['title'],
   count: function() {
@@ -259,6 +259,9 @@ App.ProductReviewsNewController = Ember.ObjectController.extend({
 //   classNameBindings: ['isOnSale:adsfasdfa']
 // });
 
+    /*
+*/
+
 App.ProductDetailComponent = Ember.Component.extend({
   classNameBindings: ['isOnSale'],
   isOnSale: function() {
@@ -270,7 +273,6 @@ App.ProductDetailComponent = Ember.Component.extend({
       console.log('ableToScroll');
     },
     
-    /*
     buy: function(product){
       this.get('storage').addToCart(this.store, product.title, product.price);
     },
@@ -286,4 +288,3 @@ App.ProductDetailComponent = Ember.Component.extend({
   }
     
 });
-*/

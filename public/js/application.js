@@ -26,7 +26,6 @@ window.App = Ember.Application.createWithMixins({
 });
 
 App.ApplicationRoute = Ember.Route.extend({
-  
   model: function () {
     return this.store.find('cart');
   },
@@ -284,6 +283,7 @@ App.CheckoutModalController = Ember.ObjectController.extend({
   
   
   firstName: 'Tonny',
+  lastName: 'Quintos',
   address: '123 Example St.',
   city: 'Manila',
   usState: 'Metro Manila',

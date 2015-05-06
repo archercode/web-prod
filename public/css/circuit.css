@@ -345,7 +345,7 @@ list-style: none;
 
 
 .checkout_modal > .modal-dialog{
-    width: 70% !important;
+    width: 80% !important;
 }
 
 .personal_details > label{
@@ -355,6 +355,21 @@ list-style: none;
   font-size: smaller;
 }
 
+.personal_details.maximize > input{
+  
+  width: 110% !important;
+}
+
 .personal_details > input{
   margin-top: 25px;
+  width: 100%;
+}
+
+.total{
+  border-top: 1px solid #c7c7c7;
+  margin-top: 1em;
+}
+
+.form-control{
+  color:#222222 !important;
 }

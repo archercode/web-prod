@@ -11,8 +11,8 @@
   <script src="js/libs/handlebars-1.1.2.js"></script>
   <script src="js/libs/ember-1.7.0.js"></script>
   <!-- // <script src="js/libs/ember-1.7.min.js"></script> -->
+  <!-- // <script src="js/libs/bootstrap.min.js"></script> -->
   <script src="js/libs/typed.js"></script>
-  <script src="js/libs/bootstrap.min.js"></script>
   <script src="ember-data.js"></script>
   <!-- // <script src="js/libs/ember-data.1.0.0-beta.4.min.js"></script> --> 
   <script src="js/libs/localstorage_adapter.js"></script>
@@ -21,6 +21,7 @@
   <script src="js/products.js"></script>
 
   <script src="js/parallax.js"></script>
+
 
   <!-- // <script src="js/cart.js"></script> -->
   <!-- // <script src="js/contacts.js"></script> -->
@@ -31,8 +32,10 @@
   <script src="js/data.js"></script>
   <!-- // <script src="js/models/recipe.js"></script> -->
   <!-- // <script src="js/ajax_helpers.js"></script>   -->   
-  <!-- <script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
- <link href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>-->
+
+  <!-- // <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
+  <script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
+ <!-- <link href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>-->
 
   <link href="css/bootstrap.css" media="screen" rel="stylesheet" />
 </head>
@@ -131,7 +134,6 @@
           {{/link-to}}
             </li>
         </ul>
-
         
       </div>
     </div>   
@@ -142,105 +144,147 @@
 {{#modal-dialog title='Checkout' ok='logout' close='removeModal' yesButton='Order' hasCloseBtn=True hasClass='checkout_modal'}}
     
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-7">
     <div class="row ">
-        <div class="col-md-7">
+        <div class="col-md-12 form-group">
             <h3 class="subheader">Personal Details</h3>
             
             <div class="row">
-                <div class="col-md-11 personal_details">
-                    <label>Name</label>
-                    {{input type="text" value=firstName}}
+                <div class="col-md-6 personal_details ">
+                    <label>First Name</label>
+                    {{input type="text" class="form-control" value=firstName}}
                 </div>
-                <div class="col-md-1">
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-md-12 personal_details">
-                    <label>Address</label>
-                    {{input type="text" value=address}} 
+                
+                <div class="col-md-6 personal_details ">
+                    <label>Last Name</label>
+                    {{input type="text" class="form-control" value=lastName}}
                 </div>
             </div>
+
             
             <div class="row">
-                <div class="col-md-4 personal_details">
-                    <label>City</label>
-                    {{input type="text" value=city}}
-                </div>
+            
                 <div class="col-md-6 personal_details">
-                    <label>Region</label>
-                    {{input type="text" value=usState}}
+                    <label>Email address</label>
+                    {{input type="email" class="form-control" value=email}}
                 </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-md-4 personal_details">
-                    <label>Zip Code</label>
-                    {{input type="text" value=zipCode}} 
-                </div>
-                <div class="col-md-8 personal_details"> 
+
+                <div class="col-md-6 personal_details"> 
                     <label>CellPhone</label>
-                    {{input type="text" value=phone}}
-                </div>
-            </div> 
-            
-            <div class="row">
-            
-                <div class="col-md-12 personal_details">
-            <label>Email address</label>
-            {{input type="email" value=email}}
+                    {{input type="text" class="form-control" value=phone}}
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-md-11 personal_details maximize" >
+                    <label>Address</label>
+                    {{input type="text" class="form-control" value=address}} 
+                </div>
+                <div class="">
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-5 personal_details">
+                    <label>City</label>
+                    {{input type="text" class="form-control" value=city}}
+                </div>
+                <div class="col-md-5 personal_details">
+                    <label>Region</label>
+                    {{input type="text" class="form-control" value=usState}}
+                </div>
+
+                <div class="col-md-2 personal_details">
+                    <label>Zip Code</label>
+                    {{input type="text" class="form-control" value=zipCode}} 
+                </div>
+            </div>
+
+            <div class="row" >
+              <div class="col-md-12 form-group">
+                <h3>
+                  Payment Options - {{selectedVal}}
+                </h3>
+
+            <div class="row" >
+
+              <div class="col-md-12 form-group">
+              {{ext-radio content=radioContent value=selectedVal}}
+              </div>
+            </div>
+            <div class="row" >
+              <div class="col-md-12 form-group">
+              {{#if optionBank }}
+                <div class="alert alert-info" role="alert">
+                  <h3>
+                    Kindly ask me for the bank details. Thank you.
+                  </h3>
+                </div>
+              {{/if}}
+
+              {{#if optionMeet }}
+              <div class="alert alert-info" role="alert">
+                  <h3>
+                    Lets schedule for a meet up. Kindly call me. Thank you.
+                  </h3>
+                </div>
+              {{/if}}
+              </div>
+              </div>
+            </div>
+          </div>
+            
         </div>
         
-        <div class="col-md-5">
-            <h3 class="subheader">Shipping Information</h3>
-            {{v-card fn=firstName street-address=address locality=city usState=usState zip=zipCode email=email phone=phone}}
-        </div>
-        
+
         </div>
     </div>
     
-     <div class="col-md-4">
+     <div class="col-md-5">
+          <div class="panel panel-default">
+          <div class="panel-body">
         <div class="row">
-    
-            <h3 class="subheader">Order Summary</h3>
-          <ul>
+          <div class="col-md-12">
+          <h3 class="subheader">Order Summary</h3>
+          <div>
             {{#each item in model itemController="application" }}
-              <li {{bind-attr class=""}}>
-              {{item.name}}: {{item.amount}} x {{item.quantity}}
-              <button class='btn btn-success' {{action 'deleteItem'}}>x</button> 
-              </li>
+              <div class="row table" {{bind-attr class=""}}>
+                <div class="col-md-7">
+                {{item.name}}:
+                </div>
+                <div class="col-md-2"> {{item.amount}}</div> 
+                <div class="col-md-2">x {{item.quantity}}</div>
+                <div class="col-md-1"> 
+                <button type="button" class="close" aria-label="Close" {{action 'deleteItem'}}><span aria-hidden="true">&times;</span></button>
+                </div> 
+                </div>
             {{/each}}
-          </ul>
-            Total items: {{itemOrderCount}}
-            Total amount: {{subTotal}}
-        
+          </div>
+       
+          <div class="total table">
+
+            <div class="row"> 
+                <div class="col-md-7">Total items: </div> 
+                <div class="col-md-2">{{itemOrderCount}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-7"> Total amount: </div> 
+                <div class="col-md-2">{{subTotal}}</div>
+            </div>
+          </div>
+          </div>
         </div>
         <div class="row">
-    
-            <h3>
-              Payment Options - {{selectedVal}}
-            </h3>
-          {{ext-radio content=radioContent value=selectedVal}}
-
-          {{#if optionBank }}
-            <div>
-              <h3>
-                you may depoist the amount to me
-              </h3>
-            </div>
-          {{/if}}
-
-          {{#if optionMeet }}
-          <div>
-              <h3>
-                lets talk to discuss your meet up point
-              </h3>
-            </div>
-          {{/if}}
-          
+          <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-12">
+                <h3 class="subheader">Shipping Information</h3>
+                {{v-card fn=firstName lastName = lastName street-address=address locality=city usState=usState zip=zipCode email=email phone=phone}}
+              </div>
+              </div>
+          </div>
+          </div>
+        </div>
         </div>
     </div>
 </div>
@@ -251,6 +295,7 @@
 <script type="text/x-handlebars" data-template-name="components/v-card">
   <ul class="vcard">
     <li class="fn">{{fn}}</li>
+    <li class="fn">{{lastName}}</li>
     <li class="street-address">{{street-address}}</li>
     <li class="locality">{{locality}}</li>
     <li><span class="state">{{usState}}</span> <span class="zip">{{zip}}</span></li>
@@ -260,11 +305,25 @@
 </script>
 
 <script type="text/x-handlebars" data-template-name='components/ext-radio'>  
-    {{#each content}}
-        <label> {{label}}
-            {{radio-button value=value name=view.name selection=view.value}}
-        </label>
-    {{/each}}
+
+    <div class="row">
+      {{#each content}}
+
+      <div class="col-md-6">
+      <div class="input-group">
+          <div class="input-group-addon">
+            <span class=""> 
+                {{radio-button value=value name=view.name selection=view.value class="radio"}} 
+            </span>
+          </div> 
+          <div class="form-control">
+          {{label}}
+          </div>
+
+      </div>
+      </div>
+      {{/each}}
+    </div>
 </script>
 
 
@@ -356,19 +415,15 @@
     <div class="element_header_item"><h3>Products</h3></div>
     <div class="element_header_bar element_header_item"></div>
   </div>
-        <div class='list-unstyled'>
-      <div class="row">
-      {{#each model}} 
-        
+  <div class='list-unstyled'>
+    <div class="row">
+      {{#each model}}     
     <div class="prod" {{action 'showModal' 'product-detail-modal' this}}>
     {{product-detail product=this tagName='div' classNames='product_item_grid'}}
     </div>
-    
-     
-      
       {{/each}}
-      </div>
     </div>
+  </div>
 </script>
 
 <script type="text/x-handlebars" data-template-name='products/boards'> 
@@ -438,7 +493,6 @@
 
 <script type="text/x-handlebars" id="components/modal-dialog">
   <div class="modal fade ">
-    <div  {{bind-attr class='hasClass'}}>
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -455,7 +509,6 @@
           <button type="button" class="btn btn-primary" {{action "ok" }}>{{yesButton}}</button>
         </div>
       </div>
-    </div>
     </div>
   </div>
 </script>  
