@@ -141,7 +141,7 @@
 </script>  
 
 <script type="text/x-handlebars" data-template-name="checkout-modal">
-{{#modal-dialog title='Checkout' ok='logout' close='removeModal' yesButton='Order' hasCloseBtn=True hasClass='checkout_modal'}}
+{{#checkoutmodal-dialog title='Checkout' ok='logout' close='removeModal' yesButton='Order' hasCloseBtn=True hasClass='checkout_modal'}}
     
 <div class="row">
     <div class="col-md-7">
@@ -289,7 +289,7 @@
     </div>
 </div>
 
-{{/modal-dialog}}
+{{/checkoutmodal-dialog}}
 </script>
 
 <script type="text/x-handlebars" data-template-name="components/v-card">
@@ -492,6 +492,28 @@
 </script>
 
 <script type="text/x-handlebars" id="components/modal-dialog">
+  <div class="modal fade ">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">{{title}}</h4>
+        </div>
+        <div class="modal-body">
+          {{yield}}
+        </div>
+        <div class="modal-footer">
+            {{#if hasCloseBtn}}  
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            {{/if}}
+          <button type="button" class="btn btn-primary" {{action "ok" }}>{{yesButton}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</script> 
+
+<script type="text/x-handlebars" id="components/checkoutmodal-dialog">
   <div class="modal fade ">
     <div class="modal-dialog">
       <div class="modal-content">

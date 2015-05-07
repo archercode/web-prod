@@ -212,12 +212,26 @@ App.ModalDialogComponent = Ember.Component.extend({
   },
     show: function() { 
     $('.modal').modal().on('hidden.bs.modal', function() {
-        console.log('closing modal');
+        console.log('closing item modal');
         this.sendAction('close');
       }.bind(this));
     }.on('didInsertElement')
 });
 
+App.CheckoutmodalDialogComponent = Ember.Component.extend({
+  actions: {
+    ok: function() {
+      $('.modal').modal('hide');
+      this.sendAction('ok');
+    }
+  },
+    show: function() { 
+    $('.modal').modal().on('hidden.bs.modal', function() {
+        console.log('closing checkout modal');
+        this.sendAction('close');
+      }.bind(this));
+    }.on('didInsertElement')
+});
 
 
 /*
