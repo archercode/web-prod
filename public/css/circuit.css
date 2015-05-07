@@ -275,6 +275,11 @@ list-style: none;
   background: #fcfcfc url(../images/icons/ic_search.png) no-repeat 5px 5px;
 }
 
+.header_items .search_bar:hover{
+  border: 1px solid #43c0ef;
+  background: #fcfcfc url(../images/icons/ic_search_blue.png) no-repeat 5px 5px;
+}
+
 
 .header_items {
     padding-top: 6px;
