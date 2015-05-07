@@ -334,7 +334,7 @@ list-style: none;
 }
 
 
-.checkout_modal > .modal-dialog{
+.checkout_modal{
     width: 80% !important;
 }
 
