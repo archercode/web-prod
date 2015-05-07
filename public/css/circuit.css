@@ -345,8 +345,11 @@ list-style: none;
   font-size: smaller;
 }
 
+.checkout-modal.table{
+    width: inherit !important;
+}
+
 .personal_details.maximize > input{
-  
   width: 110% !important;
 }
 

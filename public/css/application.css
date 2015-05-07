@@ -63,7 +63,7 @@ textarea {
 /*for vcard under checkout*/
 .vcard {
   border: 1px solid #dcdcdc;
-  max-width: 12em;
+  /*max-width: 12em;*/
   padding: 0.5em;
 }
 .vcard li {

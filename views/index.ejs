@@ -152,7 +152,7 @@
             <div class="row">
                 <div class="col-md-6 personal_details ">
                     <label>First Name</label>
-                    {{input type="text" class="form-control" value=firstName}}
+                    {{input type="text" class="form-control" required=True value=firstName}}
                 </div>
                 
                 <div class="col-md-6 personal_details ">
@@ -248,12 +248,13 @@
           <h3 class="subheader">Order Summary</h3>
           <div>
             {{#each item in model itemController="application" }}
-              <div class="row table" {{bind-attr class=""}}>
+              <div class="row table checkout-modal" {{bind-attr class=""}}>
                 <div class="col-md-7">
                 {{item.name}}:
                 </div>
                 <div class="col-md-2"> {{item.amount}}</div> 
-                <div class="col-md-2">x {{item.quantity}}</div>
+                <div class="col-md-1">x  </div>
+                <div class="col-md-1">{{item.quantity}}</div>
                 <div class="col-md-1"> 
                 <button type="button" class="close" aria-label="Close" {{action 'deleteItem'}}><span aria-hidden="true">&times;</span></button>
                 </div> 
