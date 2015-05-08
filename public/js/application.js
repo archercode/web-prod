@@ -75,11 +75,19 @@ App.ApplicationController = Ember.ObjectController.extend({
    // console.log(this);
     return this.get('length');
   }.property('length'),
-  /*
-  model: function () {
-    return this.modelFor('cart');
-  },
-  */
+  
+  //amount: Ember.computed.mapBy('model','amount'),
+  quantity: Ember.computed.mapBy('model','quantity'),
+  //totalAmount: Ember.computed.sum('amount'),
+  totalItems: Ember.computed.sum('quantity'),
+
+  totalAmount: function(){
+    var amount = 0;
+    for(var i=0; i < this.get('itemCounter'); ++i)
+      amount += (this.get('amount')[i] * this.get('quantity')[i]);
+    return amount.toString();
+  }.property('model.@each.amount', 'model.@each.quantity'),
+
   actions: {
     deleteItem:function(key){
         var cart = this.store.all('cart');
