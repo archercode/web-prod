@@ -76,18 +76,22 @@ App.ApplicationController = Ember.ObjectController.extend({
     return this.get('length');
   }.property('length'),
   
-  //amount: Ember.computed.mapBy('model','amount'),
-  quantity: Ember.computed.mapBy('model','quantity'),
-  //totalAmount: Ember.computed.sum('amount'),
-  totalItems: Ember.computed.sum('quantity'),
+  /*
+  a: Ember.computed.mapBy('model','amount'),
+  
 
+  quan: Ember.computed.mapBy('model','quantity'),
+  //totalAmount: Ember.computed.sum('amount'),
+  totalItems: 9,//Ember.computed.sum('quan'),
+
+  /*
   totalAmount: function(){
     var amount = 0;
     for(var i=0; i < this.get('itemCounter'); ++i)
-      amount += (this.get('amount')[i] * this.get('quantity')[i]);
+      amount += (this.get('a')[i] * this.get('quan')[i]);
     return amount.toString();
-  }.property('model.@each.amount', 'model.@each.quantity'),
-
+  }.property('model.@each.a', 'model.@each.quan'),
+  */
   actions: {
     deleteItem:function(key){
         var cart = this.store.all('cart');
@@ -273,6 +277,27 @@ App.ExtRadioComponent = Ember.Component.extend({
 
 
 App.CheckoutModalController = Ember.ObjectController.extend({
+  itemCounter: function() {
+   // console.log(this);
+    return this.get('length');
+  }.property('length'),
+    
+
+  amount: Ember.computed.mapBy('model','amount'),
+  quantity: Ember.computed.mapBy('model','quantity'),
+  //totalAmount: Ember.computed.sum('amount'),
+  totalItems: Ember.computed.sum('quantity'),
+
+  
+  totalAmount: function(){
+    var amount = 0;
+    for(var i=0; i < this.get('itemCounter'); ++i)
+      amount += (this.get('amount')[i] * this.get('quantity')[i]);
+    return amount.toString();
+  }.property('model.@each.amount', 'model.@each.quantity'),
+  
+
+
   selectedVal: 'bank',
 
   radioContent: [
