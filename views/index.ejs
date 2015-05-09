@@ -6,6 +6,7 @@
   
   <link href="css/application.css" media="screen" rel="stylesheet" />
   <link href="css/circuit.css" media="screen" rel="stylesheet" /> 
+  <link href="css/csshake.min.css" media="screen" rel="stylesheet" /> 
   <!-- // <script src="js/libs/jquery-1.10.2.js"></script> -->
   <script src="js/libs/jquery-1.10.2.min.js"></script>
   <script src="js/libs/handlebars-1.1.2.js"></script>
@@ -69,7 +70,7 @@
             </div>
         </li>
         <li class="compact">
-          <div class="">
+          <div class="shake shake-slow">
             <div {{action 'showModal' 'checkout-modal' model}}><img src="images/ic_cart.png"  class="image_logo cart" alt="logo" height="40" width="40">
              {{#if itemCounter}} 
             <div class="cart_itemCount">{{totalItems}}</div>
@@ -442,7 +443,7 @@
   <div class='list-unstyled'>
     <div class="row">
       {{#each model}}     
-    <div class="prod" {{action 'showModal' 'product-detail-modal' this}}>
+    <div class="col-md-4" {{action 'showModal' 'product-detail-modal' this}}>
     {{product-detail product=this tagName='div' classNames='product_item_grid' addMe="addItem"}}
     </div>
       {{/each}}
@@ -459,7 +460,7 @@
   </div>
 <div class='list-unstyled'>
   {{#each}}
-    <div class="prod" {{action 'showModal' 'product-detail-modal' this}}>
+    <div class="col-md-4" {{action 'showModal' 'product-detail-modal' this}}>
     {{product-detail product=this tagName='div' classNames='product_item_grid' addMe="addItem"}}
     </div>
   {{/each}}
@@ -475,7 +476,7 @@
   </div>
 <div class='list-unstyled'>
   {{#each}}
-    <div class="prod" {{action 'showModal' 'product-detail-modal' this}}>
+    <div class="col-md-4" {{action 'showModal' 'product-detail-modal' this}}>
     {{product-detail product=this tagName='div' classNames='product_item_grid' addMe="addItem"}}
     </div>
   {{/each}}
@@ -491,7 +492,7 @@
   </div>
 <div class='list-unstyled'>
   {{#each}}
-    <div class="prod" {{action 'showModal' 'product-detail-modal' this}}>
+    <div class="col-md-4" {{action 'showModal' 'product-detail-modal' this}}>
     {{product-detail product=this tagName='div' classNames='product_item_grid' addMe="addItem"}}
     </div>
   {{/each}}
