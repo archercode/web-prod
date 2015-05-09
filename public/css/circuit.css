@@ -32,7 +32,7 @@
 }
 
 .product_item_grid {
-    padding: 25px;
+    padding: 35px;
 }
 .product_item_description {
     padding: 10px;
@@ -370,4 +370,33 @@ list-style: none;
 
 .form-control{
   color:#222222 !important;
+}
+
+.glyphicon-remove{
+  position: absolute !important;
+  right: 23px;
+  top: 35px !important;
+  z-index: 2;
+  /* display: block; */
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  pointer-events: none;
+}
+
+.product-detail-price{
+  color: white;
+  position: relative;
+  top: 45px;
+  right: -35px;
+  text-shadow: 0 1px 2px rgba(0,0,0,.6);
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.btn-info{
+  font-size: large !important;
+  background-color: #fb755a !important;
+  border-color: #fb755a !important;
 }

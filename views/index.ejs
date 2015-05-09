@@ -11,7 +11,7 @@
   <script src="js/libs/handlebars-1.1.2.js"></script>
   <script src="js/libs/ember-1.7.0.js"></script>
   <!-- // <script src="js/libs/ember-1.7.min.js"></script> -->
-  <!-- // <script src="js/libs/bootstrap.min.js"></script> -->
+  <script src="js/libs/bootstrap.min.js"></script>
   <script src="js/libs/typed.js"></script>
   <script src="ember-data.js"></script>
   <!-- // <script src="js/libs/ember-data.1.0.0-beta.4.min.js"></script> --> 
@@ -34,7 +34,7 @@
   <!-- // <script src="js/ajax_helpers.js"></script>   -->   
 
   <!-- // <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
-  <script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
+  <!-- // <script src="http://getbootstrap.com/dist/js/bootstrap.js"></script> -->
  <!-- <link href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>-->
 
   <link href="css/bootstrap.css" media="screen" rel="stylesheet" />
@@ -72,7 +72,7 @@
           <div class="">
             <div {{action 'showModal' 'checkout-modal' model}}><img src="images/ic_cart.png"  class="image_logo cart" alt="logo" height="40" width="40">
              {{#if itemCounter}} 
-            <div class="cart_itemCount">{{itemCounter}}</div>
+            <div class="cart_itemCount">{{totalItems}}</div>
               {{/if}}
             </div>
           </div>
@@ -109,7 +109,7 @@
     
     <p class='pull-right'>{{#link-to 'credits'}}Credits{{/link-to}}</p>
     <p class='pull-right'>{{#link-to 'about'}}About{{/link-to}}</p>
-    
+    v
   </footer>
 </script>
 
@@ -149,15 +149,21 @@
         <div class="col-md-12 form-group">
             <h3 class="subheader">Personal Details</h3>
             
-            <div class="row">
+            <div class="row"> 
+
                 <div class="col-md-6 personal_details ">
                     <label>First Name</label>
                     {{input type="text" class="form-control" required=True value=firstName}}
+
+                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+
                 </div>
                 
                 <div class="col-md-6 personal_details ">
                     <label>Last Name</label>
                     {{input type="text" class="form-control" value=lastName}}
+
+                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                 </div>
             </div>
 
@@ -167,20 +173,31 @@
                 <div class="col-md-6 personal_details">
                     <label>Email address</label>
                     {{input type="email" class="form-control" value=email}}
+
+                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                 </div>
 
                 <div class="col-md-6 personal_details"> 
                     <label>CellPhone</label>
                     {{input type="text" class="form-control" value=phone}}
+
+                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-md-11 personal_details maximize" >
+                <div class="col-md-8 personal_details" >
                     <label>Address</label>
                     {{input type="text" class="form-control" value=address}} 
+
+                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                 </div>
-                <div class="">
+                <div class="col-md-4 personal_details">
+                     <label>Address</label>
+                    {{input type="text" class="form-control" value=address}} 
+
+                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                
                 </div>
             </div>
             
@@ -188,15 +205,21 @@
                 <div class="col-md-5 personal_details">
                     <label>City</label>
                     {{input type="text" class="form-control" value=city}}
+
+                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                 </div>
                 <div class="col-md-5 personal_details">
                     <label>Region</label>
                     {{input type="text" class="form-control" value=usState}}
+
+                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                 </div>
 
                 <div class="col-md-2 personal_details">
                     <label>Zip Code</label>
                     {{input type="text" class="form-control" value=zipCode}} 
+
+                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                 </div>
             </div>
 
@@ -420,7 +443,7 @@
     <div class="row">
       {{#each model}}     
     <div class="prod" {{action 'showModal' 'product-detail-modal' this}}>
-    {{product-detail product=this tagName='div' classNames='product_item_grid'}}
+    {{product-detail product=this tagName='div' classNames='product_item_grid' addMe="addItem"}}
     </div>
       {{/each}}
     </div>
@@ -437,7 +460,7 @@
 <div class='list-unstyled'>
   {{#each}}
     <div class="prod" {{action 'showModal' 'product-detail-modal' this}}>
-    {{product-detail product=this tagName='div' classNames='product_item_grid'}}
+    {{product-detail product=this tagName='div' classNames='product_item_grid' addMe="addItem"}}
     </div>
   {{/each}}
 </div>
@@ -453,7 +476,7 @@
 <div class='list-unstyled'>
   {{#each}}
     <div class="prod" {{action 'showModal' 'product-detail-modal' this}}>
-    {{product-detail product=this tagName='div' classNames='product_item_grid'}}
+    {{product-detail product=this tagName='div' classNames='product_item_grid' addMe="addItem"}}
     </div>
   {{/each}}
 </div>
@@ -469,7 +492,7 @@
 <div class='list-unstyled'>
   {{#each}}
     <div class="prod" {{action 'showModal' 'product-detail-modal' this}}>
-    {{product-detail product=this tagName='div' classNames='product_item_grid'}}
+    {{product-detail product=this tagName='div' classNames='product_item_grid' addMe="addItem"}}
     </div>
   {{/each}}
 </div>
@@ -537,18 +560,23 @@
 </script>  
    
 <script type="text/x-handlebars" data-template-name='components/product-detail'>
+
+
 <div class="row">  
+    <div class="product-detail-price">₱{{product.price}}</div>
     <img {{bind-attr src='product.image'}} class='img-thumbnail'/>
 </div>
+
+
 <div class='row product_item_description'>
-    <div class="col-md-8">
+    <div class="col-md-10">
         <h4>{{product.title}}</h4>
     </div>
-    <div class="col-md-4">
-        <button class='btn btn-success' {{action 'buy' product}}> ₱{{product.price}}</button>
-        <button>+</button>
+    <div class="col-md-2">
+     
+        <button class = 'btn btn-info' {{action 'addMe' product}}>+</button>
     </div>
-</div>
+</div> 
 </script>
 
 <script type="text/x-handlebars" data-template-name='product'>

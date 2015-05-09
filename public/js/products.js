@@ -157,7 +157,8 @@ App.ProductsSensorsRoute = Ember.Route.extend({
 //App.ProductsSensorRoute = Ember.Route.extend({
 App.ProductsRoboticsRoute = Ember.Route.extend({
   model: function () {
-    return this.modelFor('products').filterProperty('type', 'robotics');
+    return this.modelFor('products').filterProperty('type','robotics');
+    //return controllerFor.filterProperty('type', 'robotics');
   }
 });
 
@@ -184,16 +185,56 @@ App.ProductsController = Ember.ArrayController.extend({
     return this.filterBy('type','sensor').get('length');
   }.property('@each.type'),
   */
-  actions: {},
+  actions: {
+    closeModal: function(){
+      //console.log('closeModal');
+    },
+    addItem: function(item){
+      //console.log(item);
+        var bool = false;
+        var tempData = [];
+        if(window.localStorage['ctr-store'] != null){
+          var localData = JSON.parse(localStorage['ctr-store']);
+          var storedItems = localData.cart.records;
+
+          for (var key in storedItems) {
+              if (storedItems.hasOwnProperty(key)) {
+                  //if(storedItems[key].name == this.get('model').title){
+                  if(storedItems[key].name == item.title){
+                  localData.cart.records[key].quantity++;
+                  var existing = this.store.update('cart',localData.cart.records[key]);
+                  bool = true;
+                  localStorage['ctr-store'] = JSON.stringify(localData);
+                  break; 
+                }
+              }
+          }
+        }
+        
+        if (!bool){
+            var cartItem = this.store.createRecord('cart', {    
+                  //name: this.get('model').title,
+                  //amount:this.get('model').price,
+                  name: item.title,
+                  amount:item.price,
+                  quantity:1
+            }
+          );
+            cartItem.save();
+        }
+    },
+
+  },
   
 });
+
 
 App.ProductsIndexController = Ember.ArrayController.extend({
   needs: 'application',
   sortProperties: ['title'],
   modelRefresher: function(){
     //this.send('ref');
-    console.log('modelRefresher');
+    //console.log('modelRefresher');
     //this.get('model').refresh();
     this.get('target.router').refresh();
     //this.get('route.products').send('ref');
@@ -202,6 +243,37 @@ App.ProductsIndexController = Ember.ArrayController.extend({
       //this.incrementProperty('showItems');    
       //console.log('items increment'); 
       this.send('loadItems');
+  },
+  actions: {
+    addItem: function(item){
+      var  prodController = this.controllerFor('products');
+      prodController.send('addItem', item);
+    },
+  },
+});
+
+App.ProductsBoardsController = Ember.ArrayController.extend({
+  actions: {
+    addItem: function(item){
+      var  prodController = this.controllerFor('products');
+      prodController.send('addItem', item);
+    },
+  },
+});
+App.ProductsSensorsController = Ember.ArrayController.extend({
+  actions: {
+    addItem: function(item){
+      var  prodController = this.controllerFor('products');
+      prodController.send('addItem', item);
+    },
+  },
+});
+App.ProductsRoboticsController = Ember.ArrayController.extend({
+  actions: {
+    addItem: function(item){
+      var  prodController = this.controllerFor('products');
+      prodController.send('addItem', item);
+    },
   },
 });
 
@@ -269,22 +341,16 @@ App.ProductDetailComponent = Ember.Component.extend({
   }.property(),
     
   actions: {
-    ableToScroll: function(){
-      console.log('ableToScroll');
-    },
-    
-    buy: function(product){
+    addMe: function(item){
+      this.sendAction('addMe', item);
       this.get('storage').addToCart(this.store, product.title, product.price);
     },
-
     openModal: function(action, model) {
       this.get('parentView').send('showModal', action, model);
     },
-    
     closeModal: function() { 
       this.get('parentView').send('removeModal', action);
-    },
-    
+      //this.sendAction('closeModal');
+    },   
   }
-    
 });

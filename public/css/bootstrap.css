@@ -305,8 +305,8 @@ img {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.428571429;
-  background-color: #edf7f2;
-  border-radius: 4px;
+  /*background-color: #edf7f2;
+  border-radius: 4px;*/
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   display: inline-block;

@@ -9,9 +9,7 @@ window.App = Ember.Application.createWithMixins({
       loop: true, 
     typeSpeed: 20, 
       contentType: 'html'
-  });
-        
-            
+  });        
         if($(".text_ideas").length == 0)
             setTimeout(setTyped, 1000);
             
@@ -31,8 +29,8 @@ App.ApplicationRoute = Ember.Route.extend({
   },
   actions: {
     showModal: function(name, model) {
-      console.log('name:');
-      console.log(name);
+      console.log('name:' + name);
+      //console.log(name);
         var modalController = this.controllerFor(name);
         modalController.set('model', model);
         this.render(name, {
@@ -76,6 +74,10 @@ App.ApplicationController = Ember.ObjectController.extend({
     return this.get('length');
   }.property('length'),
   
+  q: Ember.computed.mapBy('model', 'quantity'),
+  //totalAmount: Ember.computed.sum('amount'),
+  totalItems: Ember.computed.sum('q'),
+
   /*
   a: Ember.computed.mapBy('model','amount'),
   
@@ -118,7 +120,7 @@ App.ApplicationController = Ember.ObjectController.extend({
           this.get('controllers.products_index').send('modelRefresher');
        // }
        // else
-       //   this.transitionToRoute('products.index');
+       // this.transitionToRoute('products.index');
   }.observes('query')
 });
 
@@ -133,7 +135,15 @@ App.ApplicationView = Ember.View.extend({
     // console.log('didInsertElement'); 
   },
 
+  // click: function(event) {
+  //   console.log(event);
+  //   console.log(event);
+  //   console.log(event);
+  //   return false;
+  // },
+
   submit: function(event) {
+
     var top = $("body").scrollTop();
       //if (!this.isScrolling){
         this.set('isScrolling', true)
@@ -365,13 +375,29 @@ App.CheckoutModalController = Ember.ObjectController.extend({
        this.get('email')
       ];
 
-      data.forEach(function(item, index) {
-        //console.log('Item %@: %@'.fmt(index, item));
-        //if (Ember.isEmpty(item) === true){
-        console.log(Ember.isEmpty(item), index);
-          //alert("hide");
-        //}
+
+      var address = this.get('address') + " " + this.get('city') +" " +  
+      this.get('usState') +" " +  this.get('zipCode'); 
+
+      var name = this.get('firstName') +" " +  this.get('lastName') + " ("+this.get('email')+")"; 
+      var objects = [];
+
+      this.get('model').content.forEach(function(item, index) { 
+        objects.push({
+          'productName': item.get('name'),
+          'quantity': item.get('quantity'),
+          'amount':item.get('amount')
+        })
       });
+
+
+
+      $.ajax({
+        type: "POST",
+        url: "/email",
+        data: { name: name, address: address, items: objects }
+      })
+
     },
     recvPayment: function(params){
       console.log(params);

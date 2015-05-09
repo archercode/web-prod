@@ -22,7 +22,7 @@ var data =
       "type"  : 'sensors',
       "image" : 'images/products/SEN0001.jpg'
     },
-    
+    /*
     {
       "title": 'Sharp GP2Y0A21 Distance Sensor (10-80cm)',
       "price": 620,
@@ -31,6 +31,7 @@ var data =
       "type"  : 'sensors',
       "image" : 'images/products/SEN0014.jpg'
     },
+    */
     {
       "title": 'UV Sensor',
       "price": 460,
@@ -360,7 +361,7 @@ app.post('/email', function(req, res) {
 
   var name = req.body.name;
   var address = req.body.address;
-  var items = JSON.parse(req.body.items); // array of {prod, quantity, amount }
+  var items = req.body.items; // array of {prod, quantity, amount }
 
 
   console.log("items: "+items);
@@ -372,20 +373,24 @@ app.post('/email', function(req, res) {
         '<p>Address: '+address+'</p>'+
         '<p>Item Info: </p>';
 
-        var itemsStr = "<ul>";
+        var itemsStr = "<table>";
+
+        itemsStr += "<th><tr><td>Item</td><td></td><td>Quantity</td><td>Amount</td></tr></th>"
+
 
         var total = 0; 
         for(var i = 0; i < items.length; i++){
-            itemsStr += "<li>"+items[i].productName;
+            itemsStr += "<tr>";
+            itemsStr += "<td>"+items[i].productName+"</td>";
 
-            itemsStr += " x "+items[i].quantity;
-            itemsStr += "     Amount: "+(items[i].quantity * items[i].amount);
+            itemsStr += "<td>"+items[i].quantity+"</td>";
+            itemsStr += "<td> "+(items[i].quantity * items[i].amount)+"</td>";
 
             total += (items[i].quantity * items[i].amount);
 
-            itemsStr += "</li>";
+            itemsStr += "</tr>";
         }
-        itemsStr += "</ul>";
+        itemsStr += "</table>";
 
       htmlStr += itemsStr;
 
@@ -405,7 +410,7 @@ app.post('/email', function(req, res) {
 
   // setup e-mail data with unicode symbols
   var mailOptions = {
-      from: 'frd.concepcion@gmail.com', // sender address
+      from: name, //'frd.concepcion@gmail.com', // sender address
       to: 'tonnyquintos@gmail.com', // list of receivers
       subject: 'Hello ', // Subject line
       text: 'Hello world', // plaintext body
