@@ -189,13 +189,13 @@
             <div class="row">
                 <div class="col-md-8 personal_details" >
                     <label>Address</label>
-                    {{input type="text" class="form-control" value=address}} 
+                    {{input type="text" class="form-control" value=addressOne}} 
 
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                 </div>
                 <div class="col-md-4 personal_details">
                      <label>Address</label>
-                    {{input type="text" class="form-control" value=address}} 
+                    {{input type="text" class="form-control" value=addressTwo}} 
 
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                 
@@ -304,7 +304,7 @@
         <div class="row">
           <div class="col-md-12">
                 <h3 class="subheader">Shipping Information</h3>
-                {{v-card fn=firstName lastName = lastName street-address=address locality=city usState=usState zip=zipCode email=email phone=phone}}
+                {{v-card fn=firstName lastName = lastName street-addressOne=addressOne street-addressTwo=addressTwo locality=city usState=usState zip=zipCode email=email phone=phone}}
               </div>
               </div>
           </div>
@@ -321,7 +321,8 @@
   <ul class="vcard">
     <li class="fn">{{fn}}</li>
     <li class="fn">{{lastName}}</li>
-    <li class="street-address">{{street-address}}</li>
+    <li class="street-address">{{street-addressOne}}</li>
+    <li class="street-address">{{street-addressTwo}}</li>
     <li class="locality">{{locality}}</li>
     <li><span class="state">{{usState}}</span> <span class="zip">{{zip}}</span></li>
     <li class="email">{{email}}</li>
