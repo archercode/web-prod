@@ -400,3 +400,7 @@ list-style: none;
   background-color: #fb755a !important;
   border-color: #fb755a !important;
 }
+
+.image_logo{ transition: all .2s ease-in-out; transform: scale(0.8); }
+.image_logo:hover { transform: scale(1); }
+
