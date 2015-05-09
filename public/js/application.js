@@ -341,7 +341,8 @@ App.CheckoutModalController = Ember.ObjectController.extend({
   
   firstName: 'Tonny',
   lastName: 'Quintos',
-  address: '123 Example St.',
+  addressOne: '123 Example St.',
+  addressTwo: '1 Subd',
   city: 'Manila',
   usState: 'Metro Manila',
   zipCode: '1234',
