@@ -154,16 +154,16 @@
             <div class="row"> 
 
                 <div class="col-md-6 personal_details">
-                    <label>First Name</label>
-                    {{input type="text" class="form-control" required=True value=firstName focus-out="focusOutFirstName" placeholder = firstName}}
+                    <!--<label>First Name</label>-->
+                    {{input type="text" class="form-control" required=True value=firstName focus-out="focusOutFirstName" placeholder = 'First Name'}}
                     {{#if firstNameToggle}}
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                     {{/if}}
                 </div>
                 
                 <div class="col-md-6 personal_details ">
-                    <label>Last Name</label>
-                    {{input type="text" class="form-control" value=lastName focus-out="focusOutLastName"}}
+                    <!--<label>Last Name</label>-->
+                    {{input type="text" class="form-control" value=lastName focus-out="focusOutLastName" placeholder = 'Last Name'}}
                      {{#if lastNameToggle}}
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                     {{/if}}
@@ -174,16 +174,16 @@
             <div class="row">
             
                 <div class="col-md-6 personal_details">
-                    <label>Email address</label>
-                    {{input type="email" class="form-control" value=email focus-out="focusOutEmail"}}
+                    <!--<label>Email address</label>-->
+                    {{input type="email" class="form-control" value=email focus-out="focusOutEmail" placeholder = 'Email Address'}}
                     {{#if emailToggle}}
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                     {{/if}}
                 </div>
 
                 <div class="col-md-6 personal_details"> 
-                    <label>CellPhone</label>
-                    {{input type="text" class="form-control" value=phone focus-out="focusOutPhone"}}
+                    <!--<label>CellPhone</label>-->
+                    {{input type="text" class="form-control" value=phone focus-out="focusOutPhone" placeholder = 'Cellphone'}}
                     {{#if phoneToggle}}
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                     {{/if}}
@@ -192,15 +192,15 @@
 
             <div class="row">
                 <div class="col-md-8 personal_details" >
-                    <label>Address</label>
-                    {{input type="text" class="form-control" value=addressOne focus-out="focusOutAddressOne"}} 
+                    <!--<label>Address</label>-->
+                    {{input type="text" class="form-control" value=addressOne focus-out="focusOutAddressOne" placeholder = 'Street Address'}} 
                     {{#if addressOneToggle}}
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                     {{/if}}
                 </div>
                 <div class="col-md-4 personal_details">
-                     <label>Address</label>
-                    {{input type="text" class="form-control" value=addressTwo focus-out="focusOutAddressTwo"}} 
+                     <!--<label>Address</label>-->
+                    {{input type="text" class="form-control" value=addressTwo focus-out="focusOutAddressTwo" placeholder = 'Address'}} 
                     {{#if addressTwoToggle}}
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                     {{/if}}
@@ -209,23 +209,23 @@
             
             <div class="row">
                 <div class="col-md-5 personal_details">
-                    <label>City</label>
-                    {{input type="text" class="form-control" value=city focus-out="focusOutCity"}}
+                    <!--<label>City</label>-->
+                    {{input type="text" class="form-control" value=city focus-out="focusOutCity" placeholder = 'City'}}
                     {{#if cityToggle}}
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                     {{/if}}
                 </div>
                 <div class="col-md-5 personal_details">
-                    <label>Region</label>
-                    {{input type="text" class="form-control" value=usState focus-out="focusOutUSState"}}
+                    <!-- <label>Region</label> -->
+                    {{input type="text" class="form-control" value=usState focus-out="focusOutUSState" placeholder = 'Region'}}
                       {{#if stateToggle}}
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                     {{/if}}
                 </div>
 
                 <div class="col-md-2 personal_details">
-                    <label>Zip Code</label>
-                    {{input type="text" class="form-control" value=zipCode focus-out="focusOutZipCode"}} 
+                    <!--<label>Zip Code</label>-->
+                    {{input type="text" class="form-control" value=zipCode focus-out="focusOutZipCode" placeholder = 'Zip'}} 
                       {{#if zipToggle}}
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                     {{/if}}
