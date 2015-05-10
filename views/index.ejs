@@ -247,18 +247,15 @@
             <div class="row" >
               <div class="col-md-12 form-group">
               {{#if optionBank }}
-                <div class="alert alert-info" role="alert">
-                  <h3>
-                    Kindly ask me for the bank details. Thank you.
-                  </h3>
+                <div class="alert alert-info" role="alert"> 
+                    Kindly ask me for the bank details. Thank you. 
                 </div>
               {{/if}}
 
               {{#if optionMeet }}
-              <div class="alert alert-info" role="alert">
-                  <h3>
-                    Lets schedule for a meet up. Thank you.
-                  </h3>
+
+              <div class="alert alert-info" role="alert"> 
+                    Lets schedule for a meet up. Kindly call me. Thank you. 
                 </div>
               {{/if}}
               </div>
@@ -278,7 +275,7 @@
         <div class="row">
           <div class="col-md-12">
           <h3 class="subheader">Order Summary</h3>
-          <div>
+          <div class="items_ordered">
             {{#each item in model itemController="application" }}
               <div class="row table checkout-modal" {{bind-attr class=""}}>
                 <div class="col-md-7">
@@ -297,12 +294,12 @@
           <div class="total table">
 
             <div class="row"> 
-                <div class="col-md-7">Total items: </div> 
-                <div class="col-md-2">{{totalItems}}</div>
+                <div class="col-md-9 center">Total items: </div> 
+                <div class="col-md-3 text-center">{{totalItems}}</div>
             </div>
             <div class="row">
-                <div class="col-md-7"> Total amount: </div> 
-                <div class="col-md-2">{{totalAmount}}</div>
+                <div class="col-md-9"> Total amount: </div> 
+                <div class="col-md-3 text-center">{{totalAmount}}</div>
             </div>
           </div>
           </div>
@@ -320,21 +317,26 @@
         </div>
         </div>
     </div>
-</div>
+  </div>
+
+  {{#if isButtonDisable}}
+     <button type="button" class="btn btn-primary" disabled>Order</button>
+     {{/if}}
+
+     {{#if isButtonActive}}
+     <button type="button" class="btn btn-primary"{{action "ok" }}>Order</button>
+     {{/if}}
 
 {{/checkoutmodal-dialog}}
 </script>
 
 <script type="text/x-handlebars" data-template-name="components/v-card">
   <ul class="vcard">
-    <li class="fn">{{fn}}</li>
-    <li class="fn">{{lastName}}</li>
-    <li class="street-address">{{street-addressOne}}</li>
-    <li class="street-address">{{street-addressTwo}}</li>
-    <li class="locality">{{locality}}</li>
-    <li><span class="state">{{usState}}</span> <span class="zip">{{zip}}</span></li>
-    <li class="email">{{email}}</li>
-    <li class="phone">{{phone}}</li>
+    <li><span class="fn">{{fn}}</span> <span class="lastName">{{lastName}}</span></li> 
+    <li><span class="street-address">{{street-addressOne}}</span>, <span class="street-address">{{street-addressTwo}}</span>, <span class="locality">{{locality}}</span>, <span class="state">{{usState}}</span> <span class="zip">{{zip}}</span></li> 
+    <li> <span class="email">{{email}}</span> </li>
+    <li><span class="phone">{{phone}}</span></li> 
+    
   </ul>
 </script>
 
@@ -554,16 +556,16 @@
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4 class="modal-title">{{title}}</h4>
         </div>
-        <div class="modal-body">
+        <div class="modal-body checkout_modal">
           {{yield}}
         </div>
         <div class="modal-footer">
             {{#if hasCloseBtn}}  
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             {{/if}}
-
+<!--
           <button type="button" class="btn btn-primary"{{action "ok" }}>{{yesButton}}</button>
-
+-->
         </div>
       </div>
     </div>
