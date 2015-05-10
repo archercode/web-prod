@@ -343,7 +343,7 @@ App.ProductDetailComponent = Ember.Component.extend({
   actions: {
     addMe: function(item){
       this.sendAction('addMe', item);
-      this.get('storage').addToCart(this.store, product.title, product.price);
+      //this.get('storage').addToCart(this.store, product.title, product.price);
     },
     openModal: function(action, model) {
       this.get('parentView').send('showModal', action, model);
