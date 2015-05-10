@@ -364,6 +364,14 @@
      <button type="button" class="btn btn-primary"{{action "ok" }}>Order</button>
      {{/if}}
 
+  {{#if isCheckoutSuccessful}}
+
+  <div>Congrautaltions your order is currently being processed! </div>
+  {{#link-to 'products'}}
+  <div>Back to Products page </div>
+  {{/link-to}}
+  {{/if}}   
+
 {{/checkoutmodal-dialog}}
 </script>
 
@@ -443,7 +451,7 @@
                 <h3>Boards</h3>
           {{/link-to}}
                 <div><h4>
-                Facilitates programming and incorporation into other circuits</h4>
+               The brains of the system. Microcontrollers, Shields, Modules and the like</h4>
                 </div>
             </li>
             <li class=" main_header_thumbnail">
@@ -456,7 +464,7 @@
                 <h3>Sensors</h3>
           {{/link-to}}
                 <div><h4>
-                Measures physical quantity and converts it into a signal which can be read by an microcontroller</h4>
+                Measures the physical world and converts it into a signal which tells the microcontroller</h4>
                 </div>
             </li>
             <li class=" main_header_thumbnail">

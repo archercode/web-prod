@@ -386,6 +386,7 @@ App.CheckoutModalController = Ember.ObjectController.extend({
   emailIsNot: Ember.computed.not('emailIsTrue'),
   isButtonDisable: true,
   isButtonActive: false,
+  isCheckoutSuccessful : false,
   
 
   actions: {
@@ -411,7 +412,21 @@ App.CheckoutModalController = Ember.ObjectController.extend({
           return;
         }
       });
+      this.toggleProperty('isCheckoutSuccessful');
+
+      this.get('store').findAll('cart').then(function(record){
+        record.content.forEach(function(rec) {
+          Ember.run.once(this, function() {
+          rec.deleteRecord();
+          rec.save();
+          });
+        }, this);
+      });
+
+      localStorage.clear();
       return;
+
+
 
       var address = this.get('addressOne') + " " + this.get('addressTwo') + " " + this.get('city') + " " +  
       this.get('usState') +" " +  this.get('zipCode'); 
@@ -500,6 +515,7 @@ App.CheckoutModalController = Ember.ObjectController.extend({
         this.set('isButtonDisable', false);
         this.set('isButtonActive', true);
       }
+
 
     },
 
