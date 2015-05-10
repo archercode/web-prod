@@ -6,6 +6,7 @@
   
   <link href="css/application.css" media="screen" rel="stylesheet" />
   <link href="css/circuit.css" media="screen" rel="stylesheet" /> 
+  <link href="css/circuit_mobile.css" media="screen" rel="stylesheet" /> 
   <link href="css/animate.css" media="screen" rel="stylesheet" /> 
   <link href="css/csshake.min.css" media="screen" rel="stylesheet" /> 
   <!-- // <script src="js/libs/jquery-1.10.2.js"></script> -->
@@ -49,20 +50,20 @@
   <div id="main_header" class="navbar navbar-default navbar-fixed-top">
     <div class="header_bg">
     </div>
-    <div class="header_items" >
+    <div class="row header_items" >
     
-    <ul class="nav-justified" >
-        <li class="compact shake shake-slow">
+    <ul class=" li_no_style" >
+        <li class="col-lg-3 col-md-3 col-xs-3 col-sm-7 compact shake shake-slow logo">
             {{#link-to "products" class="" }}
                 <img src="images/ic_logo.png"  class="image_logo" alt="logo" height="32" width="122" {{action 'submit' target="view"}}>{{/link-to}}
             
         </li>
-        <li class="compact">
+        <li class="col-lg-4 col-md-4 compact">
             <div class="" id="">
             {{product-header-filters-top product=this tagName='div' classNames='filters'}}
             </div>
         </li>
-        <li class="compact">
+        <li class="col-lg-3 col-md-3  col-xs-6  col-sm-3 compact">
             <div>
             <div {{action 'submit' target="view"}}>
                 <form {{action "search" on="submit"}} class=" ">
@@ -70,7 +71,7 @@
                 </form>
             </div>
         </li>
-        <li class="compact">
+        <li class="col-lg-2 col-md-2 col-xs-1 col-sm-2 compact">
           <div class="cart ">
             <div {{action 'showModal' 'checkout-modal' model}}><img src="images/ic_cart.png"  class="image_logo cart" alt="logo" height="40" width="40">
              {{#if itemCounter}} 
@@ -155,19 +156,19 @@
 <script type="text/x-handlebars" data-template-name='components/product-header-filters-top'>
     
     <div class=''>
-      <div>
-          <ul class="nav-justified ">
-            <li class=" "{{action 'submit' target="parentView"}}>
+      <div class="row">
+          <ul class=" li_no_style">
+            <li class="col-md-4"{{action 'submit' target="parentView"}}>
           {{#link-to 'products.boards' activeClass="selected"}}
             BOARDS
           {{/link-to}}
             </li>
-            <li class=" " {{action 'submit' target="parentView"}}>
+            <li class="col-md-4" {{action 'submit' target="parentView"}}>
           {{#link-to 'products.sensors' activeClass="selected"}}
             SENSORS
           {{/link-to}}
             </li>
-            <li class=" "{{action 'submit' target="parentView"}}>
+            <li class="col-md-4"{{action 'submit' target="parentView"}}>
           {{#link-to 'products.robotics' activeClass="selected"}}
             ROBOTICS
           {{/link-to}}

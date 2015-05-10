@@ -1,0 +1,16 @@
+@media screen and (max-width: 970px) {
+    .filters {
+        display: none;
+        /*opacity: 0;*/
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .filters {
+        display: none;
+        /*opacity: 0;*/
+    }
+    .shake.logo{
+        /*display:none;*/
+    }
+}

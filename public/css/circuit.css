@@ -272,6 +272,7 @@ list-style: none;
   height: 26px;
   background-position: 7px 6px;
   width: 150px;
+    margin-top: 4px;
     
         
   color: #666;
@@ -296,7 +297,7 @@ list-style: none;
 
 .header_items {
     padding-top: 6px;
-      width: 960px;
+      /*width: 960px;*/
   margin: 0 auto;
   position: relative;
 }
@@ -309,7 +310,7 @@ list-style: none;
 }
 
 .header_items .compact{
-    width: 0.1%;
+    /*width: 0.1%;*/
 }
 
 .header_items .nav-justified{
@@ -329,12 +330,17 @@ list-style: none;
 
 .cart{
     opacity: 0.8;
+    margin-top: -2px;
 }
 
 .cart:hover{
     opacity: 1;
 }
 
+.filters{
+
+  margin-top: 10px;
+}
 
 .header_items .filters li a:hover{
     /*color: #faf2ee;*/
@@ -460,3 +466,6 @@ a.text_blue:hover{
 .footer_details{
     padding-top: 8px;
 }
+
+
+
