@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0"> 
   <title>Rockin' Circuits!</title>
   
   <link href="css/application.css" media="screen" rel="stylesheet" />
-  <link href="css/circuit.css" media="screen" rel="stylesheet" /> 
   <link href="css/circuit_mobile.css" media="screen" rel="stylesheet" /> 
+  <link href="css/circuit.css" media="screen" rel="stylesheet" /> 
   <link href="css/animate.css" media="screen" rel="stylesheet" /> 
   <link href="css/csshake.min.css" media="screen" rel="stylesheet" /> 
   <!-- // <script src="js/libs/jquery-1.10.2.js"></script> -->
@@ -441,10 +441,10 @@
 
     
 <script type="text/x-handlebars" data-template-name='components/product-header-filters'> 
-      <div>
+      <div class="row">
           <ul class="nav-justified">
 
-            <li class=" main_header_thumbnail">
+            <li class="col-md-4 col-sm-1 main_header_thumbnail">
           {{#link-to 'products.boards' classNames="list-group-item"}}
                 <div class=''>
                 <img src="images/icons/Remote-Control-256.png"  class="image_logo" alt="logo" height="128" width="128">
@@ -455,7 +455,7 @@
                The brains of the system. Microcontrollers, Shields, Modules and the like</h4>
                 </div>
             </li>
-            <li class=" main_header_thumbnail">
+            <li class="col-md-4 col-sm-1 main_header_thumbnail">
           {{#link-to 'products.sensors' classNames="list-group-item"}}
                 
                 
@@ -468,7 +468,7 @@
                 Measures the physical world and converts it into a signal which tells the microcontroller</h4>
                 </div>
             </li>
-            <li class=" main_header_thumbnail">
+            <li class="col-md-4 col-sm-1 main_header_thumbnail">
           {{#link-to 'products.robotics' classNames="list-group-item"}}
                 <div class=''>
                 <img src="images/icons/Webcam-256.png"  class="image_logo" alt="logo" height="128" width="128">
