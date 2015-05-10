@@ -107,11 +107,48 @@
   
   <footer class='container'>
     <hr />
-    <p class='pull-left'>&copy; 2015 ArcherCode </p>
     
-    <p class='pull-right'>{{#link-to 'credits'}}Credits{{/link-to}}</p>
-    <p class='pull-right'>{{#link-to 'about'}}About{{/link-to}}</p>
-    v
+    <div class="row">
+        
+        <div class="col-md-6 pull-left">
+            <ul class="nav-justified li_no_style footer_details vertical-center ">
+            <li><h5 class="header">HOME</h5></li>
+            <li class=""{{action 'submit' target="parentView"}}>
+          {{#link-to 'products.boards' activeClass="selected" class="text_blue"}}
+            Boards
+          {{/link-to}}
+            </li>
+            <li class="" {{action 'submit' target="parentView"}}>
+          {{#link-to 'products.sensors' activeClass="selected" class="text_blue"}}
+            Sensors
+          {{/link-to}}
+            </li>
+            <li class=" "{{action 'submit' target="parentView"}}>
+          {{#link-to 'products.robotics' activeClass="selected" class="text_blue"}}
+            Robotics
+          {{/link-to}}
+            </li>
+            <li>{{#link-to 'credits' class="text_blue"}}Credits{{/link-to}}</li>
+            <li>{{#link-to 'about' class="text_blue"}}About{{/link-to}}</li>
+            </ul>
+        </div>
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-4 pull-right">
+            <ul class="nav-justified li_no_style">
+            <li><h5 class="header">CONNECT    </h5></li>
+            <li><a href="www.facebook.com" class="text_blue">
+                <img src="images/icons/Facebook-48.png"  class="image_logo" alt="logo" height="48" width="48"></a></li>
+            <li><a href="www.youtube.com" class="text_blue">
+                <img src="images/icons/YouTube1-48.png"  class="image_logo" alt="logo" height="48" width="48"></a></li>
+            <li><a href="www.twitter.com" class="text_blue">
+                <img src="images/icons/Twitter-Bird-48.png"  class="image_logo" alt="logo" height="48" width="48"></a></li>
+            <li><a href="www.olx.com" class="text_blue"><img src="images/icons/OLX-48.png"  class="image_logo" alt="logo" height="48" width="48"></a></li>
+            </ul>
+        </div>
+
+    </div>
+    
   </footer>
 </script>
 
