@@ -68,6 +68,7 @@ App.ApplicationRoute = Ember.Route.extend({
 
 App.ApplicationController = Ember.ObjectController.extend({
   needs: 'products_index',
+  check : false,
   queryField: null,
   itemCounter: function() {
    // console.log(this);
@@ -241,6 +242,15 @@ App.ModalDialogComponent = Ember.Component.extend({
 });
 
 App.CheckoutmodalDialogComponent = Ember.Component.extend({
+  /*
+  CheckoutButton: (function(){
+      return false;
+  }).property(),
+
+  noneMe: function(){
+    this.get()
+  },
+  */
   actions: {
     ok: function() {
       $('.modal').modal('hide');
@@ -287,6 +297,7 @@ App.ExtRadioComponent = Ember.Component.extend({
 
 
 App.CheckoutModalController = Ember.ObjectController.extend({
+
   itemCounter: function() {
    // console.log(this);
     return this.get('length');
@@ -297,7 +308,10 @@ App.CheckoutModalController = Ember.ObjectController.extend({
   quantity: Ember.computed.mapBy('model','quantity'),
   //totalAmount: Ember.computed.sum('amount'),
   totalItems: Ember.computed.sum('quantity'),
+  emailIsTrue: Ember.computed.match('email', /^.+@.+\..+$/),
+  emailToggle:Ember.computed.not('emailIsTrue'),
 
+  //emailToggle: this.toggleProperty('emailIsTrue'),
   
   totalAmount: function(){
     var amount = 0;
@@ -339,7 +353,7 @@ App.CheckoutModalController = Ember.ObjectController.extend({
   }.property('firstName'),
   
   
-  firstName: 'Tonny',
+  firstName:'Tonny',
   lastName: 'Quintos',
   addressOne: '123 Example St.',
   addressTwo: '1 Subd',
@@ -367,17 +381,29 @@ App.CheckoutModalController = Ember.ObjectController.extend({
 
   actions: {
     logout: function() {
-      var data = [
-       this.get('firstName'),
-       this.get('address'), 
-       this.get('city'), 
-       this.get('usState'), 
-       this.get('zipCode'), 
-       this.get('email')
-      ];
 
+    var data = [
+      this.get('firstNameToggle'),
+      this.get('lastNameToggle'),
+      //this.get('emailToggle'),
+      //this.get('emailIsTrue'),
+      this.get('phoneToggle'),
+      this.get('addressOneToggle'),
+      this.get('addressTwoToggle'),
+      this.get('cityToggle'),
+      this.get('stateToggle'),
+      this.get('zipToggle'),
+    ];
 
-      var address = this.get('address') + " " + this.get('city') +" " +  
+      data.forEach(function(item,index){
+        if (item === true){
+          console.log('some items are blank');
+          return;
+        }
+      });
+      return;
+
+      var address = this.get('addressOne') + " " + this.get('addressTwo') + " " + this.get('city') + " " +  
       this.get('usState') +" " +  this.get('zipCode'); 
 
       var name = this.get('firstName') +" " +  this.get('lastName') + " ("+this.get('email')+")"; 
@@ -391,8 +417,6 @@ App.CheckoutModalController = Ember.ObjectController.extend({
         })
       });
 
-
-
       $.ajax({
         type: "POST",
         url: "/email",
@@ -400,11 +424,47 @@ App.CheckoutModalController = Ember.ObjectController.extend({
       })
 
     },
-    recvPayment: function(params){
-      console.log(params);
 
+    firstNameToggle: false,
+    lastNameToggle: false,
+    // emailToggle: false,
+    phoneToggle: false,
+    addressOneToggle:false,
+    addressTwoToggle: false,
+    cityToggle: false,
+    stateToggle: false,
+    zipToggle: false,
+
+    focusOutFirstName: function(params){
+      this.set('firstNameToggle', Ember.isEmpty(this.get('firstName')));
+      //this.toggleProperty('CheckoutButton');
     },
-  }
+    focusOutLastName: function(params){
+      this.set('lastNameToggle', Ember.isEmpty(this.get('lastName')));
+    },
+    focusOutEmail: function(params){
+      //this.set('emailToggle', Ember.computed.match('email', /^.+@.+\..+$/));
+    },
+    focusOutPhone: function(params){
+      this.set('phoneToggle', Ember.isEmpty(this.get('phone')));
+    },
+    focusOutAddressOne: function(params){
+      this.set('addressOneToggle', Ember.isEmpty(this.get('addressOne')));
+    },
+    focusOutAddressTwo: function(params){
+      this.set('addressTwoToggle', Ember.isEmpty(this.get('addressTwo')));
+    },
+    focusOutCity: function(params){
+      this.set('cityToggle', Ember.isEmpty(this.get('city')));
+    },
+    focusOutUSState: function(params){
+      this.set('stateToggle', Ember.isEmpty(this.get('usState')));
+    },
+    focusOutZipCode: function(params){
+      this.set('zipToggle', Ember.isEmpty(this.get('zipCode')));
+    },
+
+  },
 });
 
 

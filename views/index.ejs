@@ -143,7 +143,7 @@
 </script>  
 
 <script type="text/x-handlebars" data-template-name="checkout-modal">
-{{#checkoutmodal-dialog title='Checkout' ok='logout' close='removeModal' yesButton='Order' hasCloseBtn=True hasClass='checkout_modal'}}
+{{#checkoutmodal-dialog title='Checkout' ok='logout' close='removeModal' yesButton='Order' hasCloseBtn=True hasClass='checkout_modal' check='check'}}
     
 <div class="row">
     <div class="col-md-7">
@@ -153,19 +153,20 @@
             
             <div class="row"> 
 
-                <div class="col-md-6 personal_details ">
+                <div class="col-md-6 personal_details">
                     <label>First Name</label>
-                    {{input type="text" class="form-control" required=True value=firstName}}
-
+                    {{input type="text" class="form-control" required=True value=firstName focus-out="focusOutFirstName"}}
+                    {{#if firstNameToggle}}
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-
+                    {{/if}}
                 </div>
                 
                 <div class="col-md-6 personal_details ">
                     <label>Last Name</label>
-                    {{input type="text" class="form-control" value=lastName}}
-
+                    {{input type="text" class="form-control" value=lastName focus-out="focusOutLastName"}}
+                     {{#if lastNameToggle}}
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                    {{/if}}
                 </div>
             </div>
 
@@ -174,54 +175,60 @@
             
                 <div class="col-md-6 personal_details">
                     <label>Email address</label>
-                    {{input type="email" class="form-control" value=email}}
-
+                    {{input type="email" class="form-control" value=email focus-out="focusOutEmail"}}
+                    {{#if emailToggle}}
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                    {{/if}}
                 </div>
 
                 <div class="col-md-6 personal_details"> 
                     <label>CellPhone</label>
-                    {{input type="text" class="form-control" value=phone}}
-
+                    {{input type="text" class="form-control" value=phone focus-out="focusOutPhone"}}
+                    {{#if phoneToggle}}
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                    {{/if}}
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-8 personal_details" >
                     <label>Address</label>
-                    {{input type="text" class="form-control" value=addressOne}} 
-
+                    {{input type="text" class="form-control" value=addressOne focus-out="focusOutAddressOne"}} 
+                    {{#if addressOneToggle}}
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                    {{/if}}
                 </div>
                 <div class="col-md-4 personal_details">
                      <label>Address</label>
-                    {{input type="text" class="form-control" value=addressTwo}} 
-
+                    {{input type="text" class="form-control" value=addressTwo focus-out="focusOutAddressTwo"}} 
+                    {{#if addressTwoToggle}}
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-                
+                    {{/if}}
                 </div>
             </div>
             
             <div class="row">
                 <div class="col-md-5 personal_details">
                     <label>City</label>
-                    {{input type="text" class="form-control" value=city}}
-
+                    {{input type="text" class="form-control" value=city focus-out="focusOutCity"}}
+                    {{#if cityToggle}}
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                    {{/if}}
                 </div>
                 <div class="col-md-5 personal_details">
                     <label>Region</label>
-                    {{input type="text" class="form-control" value=usState}}
-
+                    {{input type="text" class="form-control" value=usState focus-out="focusOutUSState"}}
+                      {{#if stateToggle}}
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                    {{/if}}
                 </div>
 
                 <div class="col-md-2 personal_details">
                     <label>Zip Code</label>
-                    {{input type="text" class="form-control" value=zipCode}} 
-
+                    {{input type="text" class="form-control" value=zipCode focus-out="focusOutZipCode"}} 
+                      {{#if zipToggle}}
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                    {{/if}}
                 </div>
             </div>
 
@@ -548,7 +555,9 @@
             {{#if hasCloseBtn}}  
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             {{/if}}
-          <button type="button" class="btn btn-primary" {{action "ok" }}>{{yesButton}}</button>
+
+          <button type="button" class="btn btn-primary"{{action "ok" }}>{{yesButton}}</button>
+
         </div>
       </div>
     </div>
@@ -570,7 +579,7 @@
     </div>
     <div class="col-md-2">
      
-        <button class = 'btn btn-info' {{action 'addMe' product}}>+</button>
+        <button class = 'btn btn-info' {{action 'addMe' product bubbles=false}}>+</button>
     </div>
 </div> 
 </script>
