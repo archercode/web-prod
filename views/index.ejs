@@ -155,7 +155,7 @@
 
                 <div class="col-md-6 personal_details">
                     <label>First Name</label>
-                    {{input type="text" class="form-control" required=True value=firstName focus-out="focusOutFirstName"}}
+                    {{input type="text" class="form-control" required=True value=firstName focus-out="focusOutFirstName" placeholder = firstName}}
                     {{#if firstNameToggle}}
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                     {{/if}}
@@ -257,7 +257,7 @@
               {{#if optionMeet }}
               <div class="alert alert-info" role="alert">
                   <h3>
-                    Lets schedule for a meet up. Kindly call me. Thank you.
+                    Lets schedule for a meet up. Thank you.
                   </h3>
                 </div>
               {{/if}}
@@ -342,7 +342,6 @@
 
     <div class="row">
       {{#each content}}
-
       <div class="col-md-6">
       <div class="input-group">
           <div class="input-group-addon">

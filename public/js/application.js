@@ -282,7 +282,7 @@ App.RadioButton = Ember.Component.extend({
     type : 'radio',
     attributeBindings : [ 'name', 'type', 'value', 'checked:checked' ],
     click : function() {
-        this.set("selection", this.$().val());
+        this.set('selection', this.$().val());
     },
     checked : function() {
         return this.get('value') === this.get('selection');
@@ -297,6 +297,16 @@ App.ExtRadioComponent = Ember.Component.extend({
 
 
 App.CheckoutModalController = Ember.ObjectController.extend({
+  
+  firstName:'',
+  lastName: '',
+  addressOne: '',
+  addressTwo: '',
+  city: '',
+  usState: '',
+  zipCode: '',
+  email: '',
+  phone: '',
 
   itemCounter: function() {
    // console.log(this);
@@ -309,7 +319,7 @@ App.CheckoutModalController = Ember.ObjectController.extend({
   //totalAmount: Ember.computed.sum('amount'),
   totalItems: Ember.computed.sum('quantity'),
   emailIsTrue: Ember.computed.match('email', /^.+@.+\..+$/),
-  emailToggle:Ember.computed.not('emailIsTrue'),
+  // emailToggle:Ember.computed.not('emailIsTrue'),
 
   //emailToggle: this.toggleProperty('emailIsTrue'),
   
@@ -322,11 +332,11 @@ App.CheckoutModalController = Ember.ObjectController.extend({
   
 
 
-  selectedVal: 'bank',
+  selectedVal: 'Bank',
 
   radioContent: [
-        {label: 'Bank', value: 'bank'},
-        {label: 'Meetup', value: 'meet'},
+        {label: 'Bank', value: 'Bank'},
+        {label: 'Meetup', value: 'Meet'},
         //{label: 'PayPal', value: 'paypal'},
         //{label: 'Credit Card', value: 'cc'},
   ],
@@ -336,11 +346,11 @@ App.CheckoutModalController = Ember.ObjectController.extend({
   optionPayP: false,    
 
   onChangeRadio : function () {
-      if (this.selectedVal === 'bank'){
+      if (this.selectedVal === 'Bank'){
         this.set('optionBank', true);
         this.set('optionMeet', false);
       }
-      if (this.selectedVal === 'meet'){
+      if (this.selectedVal === 'Meet'){
         this.set('optionBank', false);
         this.set('optionMeet', true);
       }
@@ -353,15 +363,6 @@ App.CheckoutModalController = Ember.ObjectController.extend({
   }.property('firstName'),
   
   
-  firstName:'Tonny',
-  lastName: 'Quintos',
-  addressOne: '123 Example St.',
-  addressTwo: '1 Subd',
-  city: 'Manila',
-  usState: 'Metro Manila',
-  zipCode: '1234',
-  email: 'tonnyquintos@gmail.com',
-  phone: '0915',
 
 
 /*
@@ -438,12 +439,15 @@ App.CheckoutModalController = Ember.ObjectController.extend({
     focusOutFirstName: function(params){
       this.set('firstNameToggle', Ember.isEmpty(this.get('firstName')));
       //this.toggleProperty('CheckoutButton');
+      console.log('focusOutFirstName');
     },
+
     focusOutLastName: function(params){
       this.set('lastNameToggle', Ember.isEmpty(this.get('lastName')));
     },
     focusOutEmail: function(params){
       //this.set('emailToggle', Ember.computed.match('email', /^.+@.+\..+$/));
+      this.set('emailToggle', Ember.computed.not('emailIsTrue'));
     },
     focusOutPhone: function(params){
       this.set('phoneToggle', Ember.isEmpty(this.get('phone')));
