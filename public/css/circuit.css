@@ -61,7 +61,7 @@ a.list-group-item.active:focus {
 }
  
 #home_header { 
-    background: url(../images/bg/sagada.jpg) no-repeat 50% 0 fixed; 
+    background: url(../images/bg/img-slider.png) no-repeat 50% 0 fixed; 
     height: auto;  
     background-size: 100% ;
     margin: 0 auto; 

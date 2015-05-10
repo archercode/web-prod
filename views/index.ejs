@@ -192,7 +192,7 @@
 
                 <div class="col-md-6 personal_details">
                     <label>First Name</label>
-                    {{input type="text" class="form-control" required=True value=firstName focus-out="focusOutFirstName"}}
+                    {{input type="text" class="form-control" required=True value=firstName focus-out="focusOutFirstName" placeholder = firstName}}
                     {{#if firstNameToggle}}
                     <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                     {{/if}}
@@ -290,6 +290,7 @@
               {{/if}}
 
               {{#if optionMeet }}
+
               <div class="alert alert-info" role="alert"> 
                     Lets schedule for a meet up. Kindly call me. Thank you. 
                 </div>
@@ -353,7 +354,15 @@
         </div>
         </div>
     </div>
-</div>
+  </div>
+
+  {{#if isButtonDisable}}
+     <button type="button" class="btn btn-primary" disabled>Order</button>
+     {{/if}}
+
+     {{#if isButtonActive}}
+     <button type="button" class="btn btn-primary"{{action "ok" }}>Order</button>
+     {{/if}}
 
 {{/checkoutmodal-dialog}}
 </script>
@@ -372,7 +381,6 @@
 
     <div class="row">
       {{#each content}}
-
       <div class="col-md-6">
       <div class="input-group">
           <div class="input-group-addon">
@@ -592,9 +600,9 @@
             {{#if hasCloseBtn}}  
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             {{/if}}
-
+<!--
           <button type="button" class="btn btn-primary"{{action "ok" }}>{{yesButton}}</button>
-
+-->
         </div>
       </div>
     </div>
