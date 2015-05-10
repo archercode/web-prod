@@ -418,6 +418,8 @@ list-style: none;
   font-size: large !important;
   background-color: #fb755a !important;
   border-color: #fb755a !important;
+    width: 40px;
+  height: 40px;
 }
 
 .image_logo{ transition: all .2s ease-in-out; transform: scale(0.8); }
