@@ -6,6 +6,7 @@
   
   <link href="css/application.css" media="screen" rel="stylesheet" />
   <link href="css/circuit.css" media="screen" rel="stylesheet" /> 
+  <link href="css/animate.css" media="screen" rel="stylesheet" /> 
   <link href="css/csshake.min.css" media="screen" rel="stylesheet" /> 
   <!-- // <script src="js/libs/jquery-1.10.2.js"></script> -->
   <script src="js/libs/jquery-1.10.2.min.js"></script>
@@ -51,7 +52,7 @@
     <div class="header_items" >
     
     <ul class="nav-justified" >
-        <li class="compact">
+        <li class="compact shake shake-slow">
             {{#link-to "products" class="" }}
                 <img src="images/ic_logo.png"  class="image_logo" alt="logo" height="32" width="122" {{action 'submit' target="view"}}>{{/link-to}}
             
@@ -70,7 +71,7 @@
             </div>
         </li>
         <li class="compact">
-          <div class="shake shake-slow">
+          <div class="cart ">
             <div {{action 'showModal' 'checkout-modal' model}}><img src="images/ic_cart.png"  class="image_logo cart" alt="logo" height="40" width="40">
              {{#if itemCounter}} 
             <div class="cart_itemCount">{{totalItems}}</div>
